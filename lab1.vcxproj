@@ -148,6 +148,7 @@
     <ClCompile Include="CLineSegment.cpp" />
     <ClCompile Include="CPoint.cpp" />
     <ClCompile Include="CRectangle.cpp" />
+    <ClCompile Include="CShapeApp.cpp" />
     <ClCompile Include="CShapeController.cpp" />
     <ClCompile Include="CShapeDrawer.cpp" />
     <ClCompile Include="CShapeParser.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="consts.h" />
     <ClInclude Include="CPoint.h" />
     <ClInclude Include="CRectangle.h" />
+    <ClInclude Include="CShapeApp.h" />
     <ClInclude Include="CShapeController.h" />
     <ClInclude Include="CShapeDrawer.h" />
     <ClInclude Include="CShapeParser.h" />

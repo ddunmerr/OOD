@@ -1,6 +1,8 @@
 #include "CRectangle.h"
 #include "ShapeFormatter.h"
 
+const double TWO = 2.0;
+
 CRectangle::CRectangle(const CPoint& leftTop, double width, double height,
 	uint32_t outlineColor, uint32_t fillColor)
 	: m_leftTop(leftTop)
@@ -18,7 +20,7 @@ double CRectangle::GetArea() const
 
 double CRectangle::GetPerimeter() const
 {
-	return 2.0 * (m_width + m_height);
+	return TWO * (m_width + m_height);
 }
 
 std::string CRectangle::ToString() const

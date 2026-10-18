@@ -1,36 +1,10 @@
-﻿#include "CCanvasAdapter.h"
-#include "CShapeController.h"
-#include "CShapeDrawer.h"
-#include "CShapeParser.h"
-#include "consts.h"
+﻿#include "CShapeApp.h"
 #include <iostream>
-#include <memory>
-#include <vector>
 
 int main()
 {
-	CShapeController controller(std::cin, std::cout);
-	controller.Run();
-
-	sf::RenderWindow window(sf::VideoMode({ WIDTH, HEIGHT }), "Shapes");
-	CCanvasAdapter canvas(window);
-
-	while (window.isOpen())
-	{
-		while (auto event = window.pollEvent())
-		{
-			if (event->is<sf::Event::Closed>())
-			{
-				window.close();
-			}
-		}
-
-		window.clear(sf::Color(240, 240, 240));
-		CShapeDrawer::DrawAll(controller.GetShapes(), canvas);
-		window.display();
-	}
+	CShapeApp app(std::cin, std::cout);
+	app.Run();
 
 	return 0;
 }
-
-// ВЫНЕСТИ MAIN, константы, имя

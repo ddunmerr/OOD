@@ -39,3 +39,6 @@ const uint32_t DEFAULT_FILL_COLOR = 0xFFF3FF;
 
 const int WIDTH = 800;
 const int HEIGHT = 600;
+
+// Окно
+const std::string WINDOW_TITLE = "Shapes";
