@@ -1,4 +1,4 @@
-#include "CCanvas.h"
+#include "CCanvasAdapter.h"
 
 namespace
 {

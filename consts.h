@@ -36,3 +36,6 @@ const std::string ERROR_INVALID_RADIUS = "Invalid radius";
 // Цвета по умолчанию (не используются в выводе, но нужны конструкторам)
 const uint32_t DEFAULT_OUTLINE_COLOR = 0x000000;
 const uint32_t DEFAULT_FILL_COLOR = 0xFFF3FF;
+
+const int WIDTH = 800;
+const int HEIGHT = 600;

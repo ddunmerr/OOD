@@ -18,7 +18,7 @@
     <ClCompile Include="lab1.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="CCanvas.cpp">
+    <ClCompile Include="CCanvasAdapter.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="CCircle.cpp">
@@ -50,7 +50,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CCanvas.h">
+    <ClInclude Include="CCanvasAdapter.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="CCircle.h">

@@ -1,4 +1,4 @@
-﻿#include "CCanvas.h"
+﻿#include "CCanvasAdapter.h"
 #include "CShapeController.h"
 #include "CShapeDrawer.h"
 #include "CShapeParser.h"
@@ -7,16 +7,13 @@
 #include <memory>
 #include <vector>
 
-const int WIDTH = 800;
-const int HEIGHT = 600;
-
 int main()
 {
 	CShapeController controller(std::cin, std::cout);
 	controller.Run();
 
 	sf::RenderWindow window(sf::VideoMode({ WIDTH, HEIGHT }), "Shapes");
-	CCanvas canvas(window);
+	CCanvasAdapter canvas(window);
 
 	while (window.isOpen())
 	{
