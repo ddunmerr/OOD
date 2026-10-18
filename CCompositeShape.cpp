@@ -2,6 +2,12 @@
 #include <algorithm>
 #include <limits>
 
+namespace
+{
+const double EMPTY_BOUNDS_VALUE = 0.0;
+const char* const EMPTY_GROUP_STRING = "GROUP: shapes=";
+} // namespace
+
 CCompositeShape::CCompositeShape(uint32_t outlineColor, uint32_t fillColor)
 	: m_outlineColor(outlineColor)
 	, m_fillColor(fillColor)
@@ -10,7 +16,7 @@ CCompositeShape::CCompositeShape(uint32_t outlineColor, uint32_t fillColor)
 
 double CCompositeShape::GetArea() const
 {
-	double total = 0.0;
+	double total = EMPTY_BOUNDS_VALUE;
 	for (const auto& child : m_children)
 	{
 		total += child->GetArea();
@@ -20,7 +26,7 @@ double CCompositeShape::GetArea() const
 
 double CCompositeShape::GetPerimeter() const
 {
-	double total = 0.0;
+	double total = EMPTY_BOUNDS_VALUE;
 	for (const auto& child : m_children)
 	{
 		total += child->GetPerimeter();
@@ -30,7 +36,7 @@ double CCompositeShape::GetPerimeter() const
 
 std::string CCompositeShape::ToString() const
 {
-	return "GROUP: shapes=" + std::to_string(m_children.size());
+	return std::string(EMPTY_GROUP_STRING) + std::to_string(m_children.size());
 }
 
 uint32_t CCompositeShape::GetOutlineColor() const { return m_outlineColor; }
@@ -60,7 +66,8 @@ CRectD CCompositeShape::GetBounds() const
 {
 	if (m_children.empty())
 	{
-		return { 0.0, 0.0, 0.0, 0.0 };
+		return { EMPTY_BOUNDS_VALUE, EMPTY_BOUNDS_VALUE,
+			EMPTY_BOUNDS_VALUE, EMPTY_BOUNDS_VALUE };
 	}
 
 	CRectD bounds = m_children.front()->GetBounds();

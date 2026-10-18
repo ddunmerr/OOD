@@ -5,10 +5,13 @@
 
 namespace
 {
-const uint32_t SELECTION_FRAME_COLOR = 0x4D6BFE; // синий, как в UI
+const uint32_t SELECTION_FRAME_COLOR = 0x4D6BFE;
 const uint32_t SELECTION_MARKER_COLOR = 0x4D6BFE;
 const double MARKER_SIZE = 6.0;
 const double MARKER_HALF = MARKER_SIZE / 2.0;
+const std::size_t MIN_SHAPES_FOR_GROUP = 2;
+const std::size_t SINGLE_SELECTED_SHAPE = 1;
+const double ZERO_DELTA = 0.0;
 } // namespace
 
 CSelectionController::CSelectionController(CShapeController& shapeController)
@@ -76,7 +79,6 @@ void CSelectionController::DrawSelection(ICanvas& canvas) const
 
 		canvas.DrawRect(topLeft, bottomRight, SELECTION_FRAME_COLOR);
 
-		// Маркеры по четырём углам
 		canvas.FillRect(CPoint(bounds.left - MARKER_HALF, bounds.top - MARKER_HALF),
 			CPoint(bounds.left + MARKER_HALF, bounds.top + MARKER_HALF),
 			SELECTION_MARKER_COLOR);
@@ -122,7 +124,6 @@ void CSelectionController::SelectShapeAt(CPoint point, bool shiftPressed)
 	auto it = std::find(m_selectedShapes.begin(), m_selectedShapes.end(), hit);
 	if (shiftPressed && it != m_selectedShapes.end())
 	{
-		// Shift+клик по уже выделенной фигуре — снимаем выделение
 		m_selectedShapes.erase(it);
 	}
 	else if (it == m_selectedShapes.end())
@@ -138,14 +139,13 @@ void CSelectionController::ClearSelection()
 
 void CSelectionController::GroupSelected()
 {
-	if (m_selectedShapes.size() < 2)
+	if (m_selectedShapes.size() < MIN_SHAPES_FOR_GROUP)
 	{
 		return;
 	}
 
 	auto composite = std::make_unique<CCompositeShape>();
 
-	// Переносим выделенные фигуры из контроллера в композит
 	auto& shapes = m_shapeController.GetShapesMutable();
 	for (auto it = shapes.begin(); it != shapes.end();)
 	{
@@ -169,7 +169,7 @@ void CSelectionController::GroupSelected()
 
 void CSelectionController::UngroupSelected()
 {
-	if (m_selectedShapes.size() != 1)
+	if (m_selectedShapes.size() != SINGLE_SELECTED_SHAPE)
 	{
 		return;
 	}
@@ -211,7 +211,6 @@ void CSelectionController::DragSelected(double dx, double dy)
 
 void CSelectionController::RemoveInvalidSelection()
 {
-	// Вспомогательный метод на случай, если фигуру удалили из контроллера
 	const auto& shapes = m_shapeController.GetShapes();
 	m_selectedShapes.erase(
 		std::remove_if(m_selectedShapes.begin(), m_selectedShapes.end(),

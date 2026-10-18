@@ -1,7 +1,10 @@
 #include "CCircle.h"
 #include "ShapeFormatter.h"
 
+namespace
+{
 const double TWO = 2.0;
+} // namespace
 
 CCircle::CCircle(const CPoint& center, double radius,
 	uint32_t outlineColor, uint32_t fillColor)
@@ -33,11 +36,6 @@ void CCircle::Draw(ICanvas& canvas) const
 	canvas.DrawCircle(m_center, m_radius, m_outlineColor);
 }
 
-uint32_t CCircle::GetOutlineColor() const { return m_outlineColor; }
-uint32_t CCircle::GetFillColor() const { return m_fillColor; }
-CPoint CCircle::GetCenter() const { return m_center; }
-double CCircle::GetRadius() const { return m_radius; }
-
 bool CCircle::ContainsPoint(const CPoint& point) const
 {
 	const double dx = point.GetX() - m_center.GetX();
@@ -55,3 +53,8 @@ void CCircle::Move(double dx, double dy)
 {
 	m_center = CPoint(m_center.GetX() + dx, m_center.GetY() + dy);
 }
+
+uint32_t CCircle::GetOutlineColor() const { return m_outlineColor; }
+uint32_t CCircle::GetFillColor() const { return m_fillColor; }
+CPoint CCircle::GetCenter() const { return m_center; }
+double CCircle::GetRadius() const { return m_radius; }

@@ -1,8 +1,11 @@
 #include "CTriangle.h"
 #include "ShapeFormatter.h"
+#include <algorithm>
 
+namespace
+{
 const double TWO = 2.0;
-const std::string COLON = ": ";
+} // namespace
 
 CTriangle::CTriangle(const CPoint& vertex1, const CPoint& vertex2, const CPoint& vertex3,
 	uint32_t outlineColor, uint32_t fillColor)
@@ -59,10 +62,6 @@ void CTriangle::Draw(ICanvas& canvas) const
 	canvas.DrawLine(m_vertex3, m_vertex1, m_outlineColor);
 }
 
-CPoint CTriangle::GetVertex1() const { return m_vertex1; }
-CPoint CTriangle::GetVertex2() const { return m_vertex2; }
-CPoint CTriangle::GetVertex3() const { return m_vertex3; }
-
 bool CTriangle::ContainsPoint(const CPoint& point) const
 {
 	const double d1 = (point.GetX() - m_vertex2.GetX()) * (m_vertex1.GetY() - m_vertex2.GetY()) - (m_vertex1.GetX() - m_vertex2.GetX()) * (point.GetY() - m_vertex2.GetY());
@@ -90,3 +89,7 @@ void CTriangle::Move(double dx, double dy)
 	m_vertex2 = CPoint(m_vertex2.GetX() + dx, m_vertex2.GetY() + dy);
 	m_vertex3 = CPoint(m_vertex3.GetX() + dx, m_vertex3.GetY() + dy);
 }
+
+CPoint CTriangle::GetVertex1() const { return m_vertex1; }
+CPoint CTriangle::GetVertex2() const { return m_vertex2; }
+CPoint CTriangle::GetVertex3() const { return m_vertex3; }

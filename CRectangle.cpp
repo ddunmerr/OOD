@@ -1,7 +1,10 @@
 #include "CRectangle.h"
 #include "ShapeFormatter.h"
 
+namespace
+{
 const double TWO = 2.0;
+} // namespace
 
 CRectangle::CRectangle(const CPoint& leftTop, double width, double height,
 	uint32_t outlineColor, uint32_t fillColor)
@@ -42,18 +45,6 @@ void CRectangle::Draw(ICanvas& canvas) const
 	canvas.DrawLine(leftBottom, m_leftTop, m_outlineColor);
 }
 
-uint32_t CRectangle::GetOutlineColor() const { return m_outlineColor; }
-uint32_t CRectangle::GetFillColor() const { return m_fillColor; }
-CPoint CRectangle::GetLeftTop() const { return m_leftTop; }
-
-CPoint CRectangle::GetRightBottom() const
-{
-	return CPoint(m_leftTop.GetX() + m_width, m_leftTop.GetY() + m_height);
-}
-
-double CRectangle::GetWidth() const { return m_width; }
-double CRectangle::GetHeight() const { return m_height; }
-
 bool CRectangle::ContainsPoint(const CPoint& point) const
 {
 	return point.GetX() >= m_leftTop.GetX() && point.GetX() <= m_leftTop.GetX() + m_width && point.GetY() >= m_leftTop.GetY() && point.GetY() <= m_leftTop.GetY() + m_height;
@@ -69,3 +60,15 @@ void CRectangle::Move(double dx, double dy)
 {
 	m_leftTop = CPoint(m_leftTop.GetX() + dx, m_leftTop.GetY() + dy);
 }
+
+uint32_t CRectangle::GetOutlineColor() const { return m_outlineColor; }
+uint32_t CRectangle::GetFillColor() const { return m_fillColor; }
+CPoint CRectangle::GetLeftTop() const { return m_leftTop; }
+
+CPoint CRectangle::GetRightBottom() const
+{
+	return CPoint(m_leftTop.GetX() + m_width, m_leftTop.GetY() + m_height);
+}
+
+double CRectangle::GetWidth() const { return m_width; }
+double CRectangle::GetHeight() const { return m_height; }
