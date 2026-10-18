@@ -5,6 +5,7 @@
         "ProvidedModule": "",
         "Includes": [
             "d:\\labs\\ood\\ood\\ccompositeshape.h",
+            "d:\\labs\\ood\\ood\\isolidshape.h",
             "d:\\labs\\ood\\ood\\ishape.h",
             "d:\\labs\\ood\\ood\\icanvasdrawable.h",
             "d:\\labs\\ood\\ood\\icanvas.h",

@@ -11,9 +11,9 @@ public:
 	void FillPolygon(const std::vector<CPoint>& points, uint32_t fillColor) const override;
 	void DrawCircle(CPoint center, double radius, uint32_t lineColor) const override;
 	void FillCircle(CPoint center, double radius, uint32_t fillColor) const override;
+	void DrawRect(CPoint topLeft, CPoint bottomRight, uint32_t lineColor) const override;
+	void FillRect(CPoint topLeft, CPoint bottomRight, uint32_t fillColor) const override;
 
 private:
 	sf::RenderTarget& m_target;
 };
-
-// переименовать

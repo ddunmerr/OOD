@@ -15,6 +15,12 @@ public:
 	{
 		return m_shapes;
 	}
+	//
+	std::vector<std::unique_ptr<IShape>>& GetShapesMutable()
+	{
+		return m_shapes;
+	}
+	//
 
 private:
 	const bool ReadShapes();

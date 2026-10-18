@@ -62,3 +62,31 @@ void CTriangle::Draw(ICanvas& canvas) const
 CPoint CTriangle::GetVertex1() const { return m_vertex1; }
 CPoint CTriangle::GetVertex2() const { return m_vertex2; }
 CPoint CTriangle::GetVertex3() const { return m_vertex3; }
+
+bool CTriangle::ContainsPoint(const CPoint& point) const
+{
+	const double d1 = (point.GetX() - m_vertex2.GetX()) * (m_vertex1.GetY() - m_vertex2.GetY()) - (m_vertex1.GetX() - m_vertex2.GetX()) * (point.GetY() - m_vertex2.GetY());
+	const double d2 = (point.GetX() - m_vertex3.GetX()) * (m_vertex2.GetY() - m_vertex3.GetY()) - (m_vertex2.GetX() - m_vertex3.GetX()) * (point.GetY() - m_vertex3.GetY());
+	const double d3 = (point.GetX() - m_vertex1.GetX()) * (m_vertex3.GetY() - m_vertex1.GetY()) - (m_vertex3.GetX() - m_vertex1.GetX()) * (point.GetY() - m_vertex1.GetY());
+
+	const bool hasNeg = (d1 < 0) || (d2 < 0) || (d3 < 0);
+	const bool hasPos = (d1 > 0) || (d2 > 0) || (d3 > 0);
+
+	return !(hasNeg && hasPos);
+}
+
+CRectD CTriangle::GetBounds() const
+{
+	const double left = std::min({ m_vertex1.GetX(), m_vertex2.GetX(), m_vertex3.GetX() });
+	const double right = std::max({ m_vertex1.GetX(), m_vertex2.GetX(), m_vertex3.GetX() });
+	const double top = std::min({ m_vertex1.GetY(), m_vertex2.GetY(), m_vertex3.GetY() });
+	const double bottom = std::max({ m_vertex1.GetY(), m_vertex2.GetY(), m_vertex3.GetY() });
+	return { left, top, right, bottom };
+}
+
+void CTriangle::Move(double dx, double dy)
+{
+	m_vertex1 = CPoint(m_vertex1.GetX() + dx, m_vertex1.GetY() + dy);
+	m_vertex2 = CPoint(m_vertex2.GetX() + dx, m_vertex2.GetY() + dy);
+	m_vertex3 = CPoint(m_vertex3.GetX() + dx, m_vertex3.GetY() + dy);
+}

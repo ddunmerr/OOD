@@ -18,6 +18,10 @@ public:
 
 	void Draw(ICanvas& canvas) const override;
 
+	bool ContainsPoint(const CPoint& point) const override;
+	CRectD GetBounds() const override;
+	void Move(double dx, double dy) override;
+
 private:
 	CPoint m_startPoint;
 	CPoint m_endPoint;

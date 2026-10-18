@@ -34,4 +34,14 @@ public:
 	{
 		calls.push_back({ "FillCircle", 1, fillColor });
 	}
+
+	void DrawRect(CPoint topLeft, CPoint bottomRight, uint32_t lineColor) const override
+	{
+		calls.push_back({ "DrawRect", 2, lineColor });
+	}
+
+	void FillRect(CPoint topLeft, CPoint bottomRight, uint32_t fillColor) const override
+	{
+		calls.push_back({ "FillRect", 2, fillColor });
+	}
 };

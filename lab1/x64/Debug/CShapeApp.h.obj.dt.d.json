@@ -267,10 +267,13 @@
             "d:\\sfml-3.1.0\\include\\sfml\\system\\sleep.hpp",
             "d:\\sfml-3.1.0\\include\\sfml\\system\\timeoutwithpredicate.hpp",
             "d:\\sfml-3.1.0\\include\\sfml\\system\\version.hpp",
-            "d:\\labs\\ood\\ood\\cshapecontroller.h",
-            "d:\\labs\\ood\\ood\\cshapeparser.h",
+            "d:\\labs\\ood\\ood\\cselectioncontroller.h",
+            "d:\\labs\\ood\\ood\\ccompositeshape.h",
+            "d:\\labs\\ood\\ood\\isolidshape.h",
             "d:\\labs\\ood\\ood\\ishape.h",
-            "d:\\labs\\ood\\ood\\icanvasdrawable.h"
+            "d:\\labs\\ood\\ood\\icanvasdrawable.h",
+            "d:\\labs\\ood\\ood\\cshapecontroller.h",
+            "d:\\labs\\ood\\ood\\cshapeparser.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

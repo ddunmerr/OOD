@@ -145,9 +145,11 @@
   <ItemGroup>
     <ClCompile Include="CCanvasAdapter.cpp" />
     <ClCompile Include="CCircle.cpp" />
+    <ClCompile Include="CCompositeShape.cpp" />
     <ClCompile Include="CLineSegment.cpp" />
     <ClCompile Include="CPoint.cpp" />
     <ClCompile Include="CRectangle.cpp" />
+    <ClCompile Include="CSelectionController.cpp" />
     <ClCompile Include="CShapeApp.cpp" />
     <ClCompile Include="CShapeController.cpp" />
     <ClCompile Include="CShapeDrawer.cpp" />
@@ -159,10 +161,12 @@
   <ItemGroup>
     <ClInclude Include="CCanvasAdapter.h" />
     <ClInclude Include="CCircle.h" />
+    <ClInclude Include="CCompositeShape.h" />
     <ClInclude Include="CLineSegment.h" />
     <ClInclude Include="consts.h" />
     <ClInclude Include="CPoint.h" />
     <ClInclude Include="CRectangle.h" />
+    <ClInclude Include="CSelectionController.h" />
     <ClInclude Include="CShapeApp.h" />
     <ClInclude Include="CShapeController.h" />
     <ClInclude Include="CShapeDrawer.h" />

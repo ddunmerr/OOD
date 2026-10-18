@@ -21,6 +21,10 @@ public:
 	CPoint GetCenter() const;
 	double GetRadius() const;
 
+	bool ContainsPoint(const CPoint& point) const override;
+	CRectD GetBounds() const override;
+	void Move(double dx, double dy) override;
+
 private:
 	CPoint m_center;
 	double m_radius;

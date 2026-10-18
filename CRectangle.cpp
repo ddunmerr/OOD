@@ -53,3 +53,19 @@ CPoint CRectangle::GetRightBottom() const
 
 double CRectangle::GetWidth() const { return m_width; }
 double CRectangle::GetHeight() const { return m_height; }
+
+bool CRectangle::ContainsPoint(const CPoint& point) const
+{
+	return point.GetX() >= m_leftTop.GetX() && point.GetX() <= m_leftTop.GetX() + m_width && point.GetY() >= m_leftTop.GetY() && point.GetY() <= m_leftTop.GetY() + m_height;
+}
+
+CRectD CRectangle::GetBounds() const
+{
+	return { m_leftTop.GetX(), m_leftTop.GetY(),
+		m_leftTop.GetX() + m_width, m_leftTop.GetY() + m_height };
+}
+
+void CRectangle::Move(double dx, double dy)
+{
+	m_leftTop = CPoint(m_leftTop.GetX() + dx, m_leftTop.GetY() + dy);
+}

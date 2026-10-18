@@ -68,3 +68,25 @@ void CCanvasAdapter::FillCircle(CPoint center, double radius, uint32_t fillColor
 	circle.setFillColor(ToSfColor(fillColor));
 	m_target.draw(circle);
 }
+
+void CCanvasAdapter::DrawRect(CPoint topLeft, CPoint bottomRight, uint32_t lineColor) const
+{
+	sf::RectangleShape rect(sf::Vector2f(
+		static_cast<float>(bottomRight.GetX() - topLeft.GetX()),
+		static_cast<float>(bottomRight.GetY() - topLeft.GetY())));
+	rect.setPosition(ToSfVector(topLeft));
+	rect.setFillColor(sf::Color::Transparent);
+	rect.setOutlineThickness(1.0f);
+	rect.setOutlineColor(ToSfColor(lineColor));
+	m_target.draw(rect);
+}
+
+void CCanvasAdapter::FillRect(CPoint topLeft, CPoint bottomRight, uint32_t fillColor) const
+{
+	sf::RectangleShape rect(sf::Vector2f(
+		static_cast<float>(bottomRight.GetX() - topLeft.GetX()),
+		static_cast<float>(bottomRight.GetY() - topLeft.GetY())));
+	rect.setPosition(ToSfVector(topLeft));
+	rect.setFillColor(ToSfColor(fillColor));
+	m_target.draw(rect);
+}

@@ -13,4 +13,7 @@ public:
 	virtual void FillPolygon(const std::vector<CPoint>& points, uint32_t fillColor) const = 0;
 	virtual void DrawCircle(CPoint center, double radius, uint32_t lineColor) const = 0;
 	virtual void FillCircle(CPoint center, double radius, uint32_t fillColor) const = 0;
+
+	virtual void DrawRect(CPoint topLeft, CPoint bottomRight, uint32_t lineColor) const = 0;
+	virtual void FillRect(CPoint topLeft, CPoint bottomRight, uint32_t fillColor) const = 0;
 };

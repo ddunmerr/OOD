@@ -37,3 +37,21 @@ uint32_t CCircle::GetOutlineColor() const { return m_outlineColor; }
 uint32_t CCircle::GetFillColor() const { return m_fillColor; }
 CPoint CCircle::GetCenter() const { return m_center; }
 double CCircle::GetRadius() const { return m_radius; }
+
+bool CCircle::ContainsPoint(const CPoint& point) const
+{
+	const double dx = point.GetX() - m_center.GetX();
+	const double dy = point.GetY() - m_center.GetY();
+	return (dx * dx + dy * dy) <= (m_radius * m_radius);
+}
+
+CRectD CCircle::GetBounds() const
+{
+	return { m_center.GetX() - m_radius, m_center.GetY() - m_radius,
+		m_center.GetX() + m_radius, m_center.GetY() + m_radius };
+}
+
+void CCircle::Move(double dx, double dy)
+{
+	m_center = CPoint(m_center.GetX() + dx, m_center.GetY() + dy);
+}

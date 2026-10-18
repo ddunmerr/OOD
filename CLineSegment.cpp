@@ -1,10 +1,13 @@
 #include "CLineSegment.h"
 #include "ShapeFormatter.h"
 #include "consts.h"
+#include <algorithm>
 #include <iomanip>
 #include <sstream>
 
 const double ZERO = 0.0;
+const double ONE = 1.0;
+const double SIX = 6.0;
 
 CLineSegment::CLineSegment(const CPoint& startPoint, const CPoint& endPoint, uint32_t outlineColor)
 	: m_startPoint(startPoint)
@@ -48,4 +51,47 @@ CPoint CLineSegment::GetStartPoint() const
 CPoint CLineSegment::GetEndPoint() const
 {
 	return m_endPoint;
+}
+
+bool CLineSegment::ContainsPoint(const CPoint& point) const
+{
+	// Расстояние от точки до отрезка
+	const double ax = m_startPoint.GetX();
+	const double ay = m_startPoint.GetY();
+	const double bx = m_endPoint.GetX();
+	const double by = m_endPoint.GetY();
+	const double px = point.GetX();
+	const double py = point.GetY();
+
+	const double dx = bx - ax;
+	const double dy = by - ay;
+	const double lengthSq = dx * dx + dy * dy;
+
+	double t = ZERO;
+	if (lengthSq > ZERO)
+	{
+		t = ((px - ax) * dx + (py - ay) * dy) / lengthSq;
+		t = std::max(ZERO, std::min(1.0, t));
+	}
+
+	const double cx = ax + t * dx;
+	const double cy = ay + t * dy;
+	const double distSq = (px - cx) * (px - cx) + (py - cy) * (py - cy);
+
+	const double CLICK_TOLERANCE = 6.0;
+	return distSq <= (CLICK_TOLERANCE * CLICK_TOLERANCE);
+}
+
+CRectD CLineSegment::GetBounds() const
+{
+	return { std::min(m_startPoint.GetX(), m_endPoint.GetX()),
+		std::min(m_startPoint.GetY(), m_endPoint.GetY()),
+		std::max(m_startPoint.GetX(), m_endPoint.GetX()),
+		std::max(m_startPoint.GetY(), m_endPoint.GetY()) };
+}
+
+void CLineSegment::Move(double dx, double dy)
+{
+	m_startPoint = CPoint(m_startPoint.GetX() + dx, m_startPoint.GetY() + dy);
+	m_endPoint = CPoint(m_endPoint.GetX() + dx, m_endPoint.GetY() + dy);
 }

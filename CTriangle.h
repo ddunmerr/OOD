@@ -21,6 +21,10 @@ public:
 
 	void Draw(ICanvas& canvas) const override;
 
+	bool ContainsPoint(const CPoint& point) const override;
+	CRectD GetBounds() const override;
+	void Move(double dx, double dy) override;
+
 private:
 	double GetSideLength(const CPoint& point1, const CPoint& point2) const;
 
