@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "lab1\\x64\\Debug\\ICanvasDrawable.obj",
+            "outputs": [
+                "lab1\\x64\\Debug\\ICanvasDrawable.h.obj.dt.module.json",
+                "lab1\\x64\\Debug\\ICanvasDrawable.h.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

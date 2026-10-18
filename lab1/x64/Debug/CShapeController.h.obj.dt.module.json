@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "lab1\\x64\\Debug\\CShapeController.obj",
+            "outputs": [
+                "lab1\\x64\\Debug\\CShapeController.h.obj.dt.module.json",
+                "lab1\\x64\\Debug\\CShapeController.h.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

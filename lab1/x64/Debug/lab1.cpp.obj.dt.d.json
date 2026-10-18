@@ -4,6 +4,7 @@
         "Source": "d:\\labs\\ood\\ood\\lab1.cpp",
         "ProvidedModule": "",
         "Includes": [
+            "d:\\labs\\ood\\ood\\cshapeapp.h",
             "d:\\labs\\ood\\ood\\ccanvasadapter.h",
             "d:\\labs\\ood\\ood\\icanvas.h",
             "d:\\labs\\ood\\ood\\cpoint.h",
@@ -271,7 +272,6 @@
             "d:\\labs\\ood\\ood\\cshapeparser.h",
             "d:\\labs\\ood\\ood\\ishape.h",
             "d:\\labs\\ood\\ood\\icanvasdrawable.h",
-            "d:\\labs\\ood\\ood\\cshapedrawer.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\iostream"
         ],
         "ImportedModules": [],
