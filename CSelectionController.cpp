@@ -1,18 +1,4 @@
 #include "CSelectionController.h"
-#include "consts.h"
-#include <SFML/Window/Keyboard.hpp>
-#include <algorithm>
-
-namespace
-{
-const uint32_t SELECTION_FRAME_COLOR = 0x4D6BFE;
-const uint32_t SELECTION_MARKER_COLOR = 0x4D6BFE;
-const double MARKER_SIZE = 6.0;
-const double MARKER_HALF = MARKER_SIZE / 2.0;
-const std::size_t MIN_SHAPES_FOR_GROUP = 2;
-const std::size_t SINGLE_SELECTED_SHAPE = 1;
-const double ZERO_DELTA = 0.0;
-} // namespace
 
 CSelectionController::CSelectionController(CShapeController& shapeController)
 	: m_shapeController(shapeController)
@@ -146,7 +132,7 @@ void CSelectionController::GroupSelected()
 
 	auto composite = std::make_unique<CCompositeShape>();
 
-	auto& shapes = m_shapeController.GetShapesMutable();
+	auto& shapes = m_shapeController.GetShapes();
 	for (auto it = shapes.begin(); it != shapes.end();)
 	{
 		auto* raw = it->get();
@@ -183,7 +169,7 @@ void CSelectionController::UngroupSelected()
 
 	auto children = composite->ReleaseChildren();
 
-	auto& shapes = m_shapeController.GetShapesMutable();
+	auto& shapes = m_shapeController.GetShapes();
 	for (auto it = shapes.begin(); it != shapes.end(); ++it)
 	{
 		if (it->get() == composite)

@@ -1,30 +1,5 @@
 #include "CCanvasAdapter.h"
 
-namespace
-{
-const int COLOR_RED_SHIFT = 16;
-const int COLOR_GREEN_SHIFT = 8;
-const int COLOR_BLUE_MASK = 0xFF;
-const int COLOR_CHANNEL_MASK = 0xFF;
-const float OUTLINE_THICKNESS = 1.0f;
-const sf::Vector2f CIRCLE_ORIGIN_OFFSET{ 0.0f, 0.0f };
-
-sf::Color ToSfColor(uint32_t rgb)
-{
-	return sf::Color(
-		static_cast<std::uint8_t>((rgb >> COLOR_RED_SHIFT) & COLOR_CHANNEL_MASK),
-		static_cast<std::uint8_t>((rgb >> COLOR_GREEN_SHIFT) & COLOR_CHANNEL_MASK),
-		static_cast<std::uint8_t>(rgb & COLOR_BLUE_MASK));
-}
-
-sf::Vector2f ToSfVector(CPoint point)
-{
-	return sf::Vector2f(
-		static_cast<float>(point.GetX()),
-		static_cast<float>(point.GetY()));
-}
-} // namespace
-
 CCanvasAdapter::CCanvasAdapter(sf::RenderTarget& target)
 	: m_target(target)
 {
@@ -41,7 +16,6 @@ void CCanvasAdapter::DrawLine(CPoint from, CPoint to, uint32_t lineColor) const
 
 void CCanvasAdapter::FillPolygon(const std::vector<CPoint>& points, uint32_t fillColor) const
 {
-	const std::size_t MIN_POLYGON_POINTS = 3;
 	if (points.size() < MIN_POLYGON_POINTS)
 	{
 		return;

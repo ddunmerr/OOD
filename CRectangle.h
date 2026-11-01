@@ -2,6 +2,8 @@
 #include "stdafx.h"
 #include "CPoint.h"
 #include "ISolidShape.h"
+#include "ShapeFormatter.h"
+#include "consts.h"
 
 class CRectangle : public ISolidShape
 {

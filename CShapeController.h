@@ -2,7 +2,9 @@
 #include "CShapeParser.h"
 #include "IShape.h"
 #include "consts.h"
+#include <iomanip>
 #include <iosfwd>
+#include <iostream>
 #include <memory>
 #include <vector>
 
@@ -15,12 +17,10 @@ public:
 	{
 		return m_shapes;
 	}
-	//
-	std::vector<std::unique_ptr<IShape>>& GetShapesMutable()
+	std::vector<std::unique_ptr<IShape>>& GetShapes()
 	{
 		return m_shapes;
 	}
-	//
 
 private:
 	const bool ReadShapes();

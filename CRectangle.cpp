@@ -1,10 +1,4 @@
 #include "CRectangle.h"
-#include "ShapeFormatter.h"
-
-namespace
-{
-const double TWO = 2.0;
-} // namespace
 
 CRectangle::CRectangle(const CPoint& leftTop, double width, double height,
 	uint32_t outlineColor, uint32_t fillColor)
@@ -23,12 +17,12 @@ double CRectangle::GetArea() const
 
 double CRectangle::GetPerimeter() const
 {
-	return TWO * (m_width + m_height);
+	return TWO_DOUBLE * (m_width + m_height);
 }
 
 std::string CRectangle::ToString() const
 {
-	return FormatShape(RECTANGLE, *this);
+	return FormatShape(RECTANGLE_STRING, *this);
 }
 
 void CRectangle::Draw(ICanvas& canvas) const

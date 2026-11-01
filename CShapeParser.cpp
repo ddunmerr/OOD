@@ -1,28 +1,12 @@
 #include "CShapeParser.h"
-#include "CCircle.h"
-#include "CLineSegment.h"
-#include "CPoint.h"
-#include "CRectangle.h"
-#include "CTriangle.h"
-#include "consts.h"
-#include <limits>
-#include <sstream>
-#include <stdexcept>
 
-const double ZERO = 0.0;
-const char EQUAL = '=';
-const char COMA = ',';
-const char SEMICOLONN = ';';
-
-namespace
-{
-CPoint ParsePoint(std::istringstream& iss, const std::string& expectedPrefix)
+CPoint CShapeParser::ParsePoint(std::istringstream& iss, const std::string& expectedPrefix)
 {
 	std::string token;
-	double x = ZERO;
-	double y = ZERO;
+	double x = 0.0;
+	double y = 0.0;
 
-	if (!std::getline(iss, token, EQUAL) || token != expectedPrefix)
+	if (!std::getline(iss, token, EQUAL_CHAR) || token != expectedPrefix)
 	{
 		throw std::runtime_error(ERROR_INVALID_POINT_PREFIX);
 	}
@@ -32,7 +16,7 @@ CPoint ParsePoint(std::istringstream& iss, const std::string& expectedPrefix)
 		throw std::runtime_error(ERROR_INVALID_X);
 	}
 
-	iss.ignore(std::numeric_limits<std::streamsize>::max(), COMA);
+	iss.ignore(std::numeric_limits<std::streamsize>::max(), COMMA_CHAR);
 
 	if (!(iss >> y))
 	{
@@ -42,26 +26,25 @@ CPoint ParsePoint(std::istringstream& iss, const std::string& expectedPrefix)
 	return CPoint(x, y);
 }
 
-void SkipSeparator(std::istringstream& iss)
+void CShapeParser::SkipSeparator(std::istringstream& iss)
 {
-	iss.ignore(std::numeric_limits<std::streamsize>::max(), SEMICOLONN);
+	iss.ignore(std::numeric_limits<std::streamsize>::max(), SEMICOLON_CHAR);
 	iss >> std::ws;
 }
-} // namespace
 
 std::unique_ptr<IShape> CShapeParser::ParseCommand(const std::string& line)
 {
 	std::istringstream iss(line);
 	std::string shapeType;
 
-	if (!std::getline(iss, shapeType, ':'))
+	if (!std::getline(iss, shapeType, COLON_CHAR))
 	{
 		return nullptr;
 	}
 
 	iss >> std::ws;
 
-	if (shapeType == TRIANGLE)
+	if (shapeType == TRIANGLE_STRING)
 	{
 		CPoint v1 = ParsePoint(iss, PREFIX_P1);
 		SkipSeparator(iss);
@@ -71,7 +54,7 @@ std::unique_ptr<IShape> CShapeParser::ParseCommand(const std::string& line)
 
 		return std::make_unique<CTriangle>(v1, v2, v3, DEFAULT_OUTLINE_COLOR, DEFAULT_FILL_COLOR);
 	}
-	else if (shapeType == RECTANGLE)
+	else if (shapeType == RECTANGLE_STRING)
 	{
 		CPoint p1 = ParsePoint(iss, PREFIX_P1);
 		SkipSeparator(iss);
@@ -86,15 +69,15 @@ std::unique_ptr<IShape> CShapeParser::ParseCommand(const std::string& line)
 
 		return std::make_unique<CRectangle>(leftTop, width, height, DEFAULT_OUTLINE_COLOR, DEFAULT_FILL_COLOR);
 	}
-	else if (shapeType == CIRCLE)
+	else if (shapeType == CIRCLE_STRING)
 	{
 		CPoint center = ParsePoint(iss, PREFIX_CENTER);
 		SkipSeparator(iss);
 
 		std::string token;
-		double radius = 0.0;
+		double radius = ZERO_DOUBLE;
 
-		if (!std::getline(iss, token, EQUAL) || token != PREFIX_RADIUS)
+		if (!std::getline(iss, token, EQUAL_CHAR) || token != PREFIX_RADIUS)
 		{
 			return nullptr;
 		}
@@ -105,7 +88,7 @@ std::unique_ptr<IShape> CShapeParser::ParseCommand(const std::string& line)
 
 		return std::make_unique<CCircle>(center, radius, DEFAULT_OUTLINE_COLOR, DEFAULT_FILL_COLOR);
 	}
-	else if (shapeType == LINE_SEGMENT)
+	else if (shapeType == LINE_SEGMENT_STRING)
 	{
 		CPoint p1 = ParsePoint(iss, PREFIX_P1);
 		SkipSeparator(iss);

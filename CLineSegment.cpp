@@ -1,17 +1,4 @@
 #include "CLineSegment.h"
-#include "ShapeFormatter.h"
-#include "consts.h"
-#include <algorithm>
-#include <iomanip>
-#include <sstream>
-
-namespace
-{
-const double ZERO = 0.0;
-const double ONE = 1.0;
-const double CLICK_TOLERANCE = 6.0;
-const double CLICK_TOLERANCE_SQ = CLICK_TOLERANCE * CLICK_TOLERANCE;
-} // namespace
 
 CLineSegment::CLineSegment(const CPoint& startPoint, const CPoint& endPoint, uint32_t outlineColor)
 	: m_startPoint(startPoint)
@@ -22,7 +9,7 @@ CLineSegment::CLineSegment(const CPoint& startPoint, const CPoint& endPoint, uin
 
 double CLineSegment::GetArea() const
 {
-	return ZERO;
+	return ZERO_DOUBLE;
 }
 
 double CLineSegment::GetPerimeter() const
@@ -34,7 +21,7 @@ double CLineSegment::GetPerimeter() const
 
 std::string CLineSegment::ToString() const
 {
-	return FormatShape(LINE_SEGMENT, *this);
+	return FormatShape(LINE_SEGMENT_STRING, *this);
 }
 
 void CLineSegment::Draw(ICanvas& canvas) const
@@ -55,11 +42,11 @@ bool CLineSegment::ContainsPoint(const CPoint& point) const
 	const double dy = by - ay;
 	const double lengthSq = dx * dx + dy * dy;
 
-	double t = ZERO;
-	if (lengthSq > ZERO)
+	double t = ZERO_DOUBLE;
+	if (lengthSq > ZERO_DOUBLE)
 	{
 		t = ((px - ax) * dx + (py - ay) * dy) / lengthSq;
-		t = std::max(ZERO, std::min(ONE, t));
+		t = std::max(ZERO_DOUBLE, std::min(ONE_DOUBLE, t));
 	}
 
 	const double cx = ax + t * dx;

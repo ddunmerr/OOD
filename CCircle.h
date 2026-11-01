@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "CPoint.h"
 #include "ISolidShape.h"
+#include "consts.h"
 #include <numbers>
 
 class CCircle : public ISolidShape

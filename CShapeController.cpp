@@ -1,6 +1,4 @@
 #include "CShapeController.h"
-#include <iomanip>
-#include <iostream>
 
 CShapeController::CShapeController(std::istream& input, std::ostream& output)
 	: m_input(input)

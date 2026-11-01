@@ -2,6 +2,11 @@
 #include "stdafx.h"
 #include "CPoint.h"
 #include "IShape.h"
+#include "ShapeFormatter.h"
+#include "consts.h"
+#include <algorithm>
+#include <iomanip>
+#include <sstream>
 
 class CLineSegment : public IShape
 {

@@ -1,11 +1,4 @@
 #include "CTriangle.h"
-#include "ShapeFormatter.h"
-#include <algorithm>
-
-namespace
-{
-const double TWO = 2.0;
-} // namespace
 
 CTriangle::CTriangle(const CPoint& vertex1, const CPoint& vertex2, const CPoint& vertex3,
 	uint32_t outlineColor, uint32_t fillColor)
@@ -29,7 +22,7 @@ double CTriangle::GetArea() const
 	double a = GetSideLength(m_vertex1, m_vertex2);
 	double b = GetSideLength(m_vertex2, m_vertex3);
 	double c = GetSideLength(m_vertex3, m_vertex1);
-	double p = (a + b + c) / TWO;
+	double p = (a + b + c) / TWO_DOUBLE;
 	return std::sqrt(p * (p - a) * (p - b) * (p - c));
 }
 
@@ -40,7 +33,7 @@ double CTriangle::GetPerimeter() const
 
 std::string CTriangle::ToString() const
 {
-	return FormatShape(TRIANGLE, *this);
+	return FormatShape(TRIANGLE_STRING, *this);
 }
 
 uint32_t CTriangle::GetOutlineColor() const
@@ -68,8 +61,8 @@ bool CTriangle::ContainsPoint(const CPoint& point) const
 	const double d2 = (point.GetX() - m_vertex3.GetX()) * (m_vertex2.GetY() - m_vertex3.GetY()) - (m_vertex2.GetX() - m_vertex3.GetX()) * (point.GetY() - m_vertex3.GetY());
 	const double d3 = (point.GetX() - m_vertex1.GetX()) * (m_vertex3.GetY() - m_vertex1.GetY()) - (m_vertex3.GetX() - m_vertex1.GetX()) * (point.GetY() - m_vertex1.GetY());
 
-	const bool hasNeg = (d1 < 0) || (d2 < 0) || (d3 < 0);
-	const bool hasPos = (d1 > 0) || (d2 > 0) || (d3 > 0);
+	const bool hasNeg = (d1 < ZERO_INT) || (d2 < ZERO_INT) || (d3 < ZERO_INT);
+	const bool hasPos = (d1 > ZERO_INT) || (d2 > ZERO_INT) || (d3 > ZERO_INT);
 
 	return !(hasNeg && hasPos);
 }

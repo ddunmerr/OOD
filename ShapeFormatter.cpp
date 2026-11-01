@@ -1,15 +1,12 @@
 #include "ShapeFormatter.h"
-#include "consts.h"
-#include <iomanip>
-#include <sstream>
 
 std::string FormatShape(const std::string& typeName, const IShape& shape)
 {
 	std::ostringstream oss;
 	oss << std::fixed << std::setprecision(0)
-		<< typeName << COLON_SPACE
+		<< typeName << COLON_STRING
 		<< PERIMETER_PREFIX << shape.GetPerimeter()
-		<< SEPARATOR
+		<< SEPARATOR_STRING
 		<< AREA_PREFIX << shape.GetArea();
 	return oss.str();
 }

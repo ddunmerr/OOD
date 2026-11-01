@@ -18,8 +18,7 @@ public:
 	virtual std::string ToString() const = 0;
 	virtual uint32_t GetOutlineColor() const = 0;
 
-	// Новое для лабы 2:
-	virtual bool ContainsPoint(const CPoint& point) const = 0; // Попадание клика
-	virtual CRectD GetBounds() const = 0; // Габариты для рамки выделения
-	virtual void Move(double dx, double dy) = 0; // Перемещение фигуры
+	virtual bool ContainsPoint(const CPoint& point) const = 0;
+	virtual CRectD GetBounds() const = 0;
+	virtual void Move(double dx, double dy) = 0;
 };

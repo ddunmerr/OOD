@@ -1,14 +1,4 @@
 #include "CShapeApp.h"
-#include "CShapeDrawer.h"
-#include <SFML/Graphics.hpp>
-
-namespace
-{
-const int BACKGROUND_COLOR_R = 240;
-const int BACKGROUND_COLOR_G = 240;
-const int BACKGROUND_COLOR_B = 240;
-const sf::Color BACKGROUND_COLOR(BACKGROUND_COLOR_R, BACKGROUND_COLOR_G, BACKGROUND_COLOR_B);
-} // namespace
 
 CShapeApp::CShapeApp(std::istream& input, std::ostream& output)
 	: m_controller(input, output)

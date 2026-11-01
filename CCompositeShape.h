@@ -1,12 +1,15 @@
 #pragma once
 #include "ISolidShape.h"
+#include "consts.h"
+#include <algorithm>
+#include <limits>
 #include <memory>
 #include <vector>
 
 class CCompositeShape : public ISolidShape
 {
 public:
-	explicit CCompositeShape(uint32_t outlineColor = 0x000000, uint32_t fillColor = 0xFFFFFF);
+	explicit CCompositeShape(uint32_t outlineColor = DEFAULT_OUTLINE_COLOR, uint32_t fillColor = DEFAULT_FILL_COLOR);
 
 	double GetArea() const override;
 	double GetPerimeter() const override;
@@ -22,7 +25,6 @@ public:
 
 	void Add(std::unique_ptr<IShape> shape);
 	std::vector<std::unique_ptr<IShape>> ReleaseChildren();
-
 	const std::vector<std::unique_ptr<IShape>>& GetChildren() const;
 
 private:

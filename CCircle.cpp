@@ -1,11 +1,6 @@
 #include "CCircle.h"
 #include "ShapeFormatter.h"
 
-namespace
-{
-const double TWO = 2.0;
-} // namespace
-
 CCircle::CCircle(const CPoint& center, double radius,
 	uint32_t outlineColor, uint32_t fillColor)
 	: m_center(center)
@@ -22,12 +17,12 @@ double CCircle::GetArea() const
 
 double CCircle::GetPerimeter() const
 {
-	return TWO * std::numbers::pi * m_radius;
+	return TWO_DOUBLE * std::numbers::pi * m_radius;
 }
 
 std::string CCircle::ToString() const
 {
-	return FormatShape(CIRCLE, *this);
+	return FormatShape(CIRCLE_STRING, *this);
 }
 
 void CCircle::Draw(ICanvas& canvas) const

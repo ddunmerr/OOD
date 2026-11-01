@@ -1,7 +1,10 @@
 #pragma once
 #include "CCompositeShape.h"
 #include "CShapeController.h"
+#include "consts.h"
 #include <SFML/Window/Event.hpp>
+#include <SFML/Window/Keyboard.hpp>
+#include <algorithm>
 #include <memory>
 #include <vector>
 
