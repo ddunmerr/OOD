@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "lab1\\x64\\Debug\\Event.obj",
+            "outputs": [
+                "lab1\\x64\\Debug\\Event.hpp.obj.dt.module.json",
+                "lab1\\x64\\Debug\\Event.hpp.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

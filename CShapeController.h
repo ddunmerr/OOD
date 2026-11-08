@@ -22,6 +22,11 @@ public:
 		return m_shapes;
 	}
 
+	std::vector<std::unique_ptr<IShape>> TakeShapes()
+	{
+		return std::move(m_shapes);
+	}
+
 private:
 	const bool ReadShapes();
 	void PrintResults();

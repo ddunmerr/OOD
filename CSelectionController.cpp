@@ -7,51 +7,45 @@ CSelectionController::CSelectionController(CShapeController& shapeController)
 
 void CSelectionController::HandleEvent(const sf::Event& event)
 {
-	if (const auto* mousePressed = event.getIf<sf::Event::MouseButtonPressed>())
+	if (auto* mp = event.getIf<sf::Event::MouseButtonPressed>())
 	{
-		if (mousePressed->button == sf::Mouse::Button::Left)
+		if (mp->button != sf::Mouse::Button::Left)
+			return;
+		sf::Vector2f pos(static_cast<float>(mp->position.x),
+			static_cast<float>(mp->position.y));
+		bool shift = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift)
+			|| sf::Keyboard::isKeyPressed(sf::Keyboard::Key::RShift);
+		SelectShapeAt(CPoint(pos.x, pos.y), shift);
+		if (!m_selectedShapes.empty())
 		{
-			const bool shift = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::RShift);
-			SelectShapeAt(CPoint(mousePressed->position.x, mousePressed->position.y), shift);
-
-			if (!m_selectedShapes.empty())
-			{
-				m_isDragging = true;
-				m_lastMousePos = sf::Vector2f(static_cast<float>(mousePressed->position.x),
-					static_cast<float>(mousePressed->position.y));
-			}
+			m_isDragging = true;
+			m_lastMousePos = pos;
 		}
 	}
-	else if (const auto* mouseReleased = event.getIf<sf::Event::MouseButtonReleased>())
+	else if (auto* mm = event.getIf<sf::Event::MouseMoved>())
 	{
-		if (mouseReleased->button == sf::Mouse::Button::Left)
-		{
+		if (!m_isDragging)
+			return;
+		sf::Vector2f pos(static_cast<float>(mm->position.x),
+			static_cast<float>(mm->position.y));
+		float dx = pos.x - m_lastMousePos.x;
+		float dy = pos.y - m_lastMousePos.y;
+		DragSelected(dx, dy);
+		m_lastMousePos = pos;
+	}
+	else if (auto* mr = event.getIf<sf::Event::MouseButtonReleased>())
+	{
+		if (mr->button == sf::Mouse::Button::Left)
 			m_isDragging = false;
-		}
 	}
-	else if (const auto* mouseMoved = event.getIf<sf::Event::MouseMoved>())
+	else if (auto* kp = event.getIf<sf::Event::KeyPressed>())
 	{
-		if (m_isDragging)
-		{
-			const sf::Vector2f current(static_cast<float>(mouseMoved->position.x),
-				static_cast<float>(mouseMoved->position.y));
-			const double dx = current.x - m_lastMousePos.x;
-			const double dy = current.y - m_lastMousePos.y;
-			DragSelected(dx, dy);
-			m_lastMousePos = current;
-		}
-	}
-	else if (const auto* keyPressed = event.getIf<sf::Event::KeyPressed>())
-	{
-		const bool ctrl = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LControl) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::RControl);
-		if (ctrl && keyPressed->code == sf::Keyboard::Key::G)
-		{
+		bool ctrl = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LControl)
+			|| sf::Keyboard::isKeyPressed(sf::Keyboard::Key::RControl);
+		if (ctrl && kp->code == sf::Keyboard::Key::G)
 			GroupSelected();
-		}
-		else if (ctrl && keyPressed->code == sf::Keyboard::Key::U)
-		{
+		if (ctrl && kp->code == sf::Keyboard::Key::U)
 			UngroupSelected();
-		}
 	}
 }
 
@@ -63,7 +57,7 @@ void CSelectionController::DrawSelection(ICanvas& canvas) const
 		const CPoint topLeft(bounds.left, bounds.top);
 		const CPoint bottomRight(bounds.right, bounds.bottom);
 
-		canvas.DrawRect(topLeft, bottomRight, SELECTION_FRAME_COLOR);
+		canvas.DrawRect(topLeft, bottomRight, SELECTION_FRAME_COLOR, 1.0);
 
 		canvas.FillRect(CPoint(bounds.left - MARKER_HALF, bounds.top - MARKER_HALF),
 			CPoint(bounds.left + MARKER_HALF, bounds.top + MARKER_HALF),
@@ -206,4 +200,9 @@ void CSelectionController::RemoveInvalidSelection()
 					== shapes.end();
 			}),
 		m_selectedShapes.end());
+}
+
+std::vector<std::unique_ptr<IShape>>& CSelectionController::GetShapes()
+{
+	return m_shapeController.GetShapes();
 }

@@ -3,8 +3,8 @@
 CPoint CShapeParser::ParsePoint(std::istringstream& iss, const std::string& expectedPrefix)
 {
 	std::string token;
-	double x = 0.0;
-	double y = 0.0;
+	double x = ZERO_DOUBLE;
+	double y = ZERO_DOUBLE;
 
 	if (!std::getline(iss, token, EQUAL_CHAR) || token != expectedPrefix)
 	{

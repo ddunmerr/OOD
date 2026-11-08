@@ -13,108 +13,189 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Исходные файлы\Shapes">
+      <UniqueIdentifier>{9444c3eb-1175-418a-b703-5cf9d9f18d15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Shapes">
+      <UniqueIdentifier>{50a1f9b2-9318-4b39-885c-222c01771036}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\App">
+      <UniqueIdentifier>{544c74b2-fe2e-468a-b6e7-5efe62397128}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Command">
+      <UniqueIdentifier>{e66523db-d0b7-4253-a6bb-f015d9e23bea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Canvas">
+      <UniqueIdentifier>{2425fa97-dee8-4e9c-b78c-6a1a2849aab4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IO">
+      <UniqueIdentifier>{8e7ca955-5522-4207-b4b3-0e55af82468e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Editor">
+      <UniqueIdentifier>{17806cc8-defa-47cf-a9e9-470d30bf12b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\App">
+      <UniqueIdentifier>{fbfd4ec1-a26e-4a16-830f-b198432d08d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Command">
+      <UniqueIdentifier>{866f41f4-faf1-4aa7-bb36-c9d6fc085437}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Canvas">
+      <UniqueIdentifier>{ce128366-8159-4c15-883d-dfe7a8603795}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Editor">
+      <UniqueIdentifier>{1b0c0833-0098-4b32-b9e4-5253e02aa6f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Toolbar">
+      <UniqueIdentifier>{2d71f0ff-369c-4c81-9918-bc2d550045fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Toolbar">
+      <UniqueIdentifier>{f41d6922-9090-4e0f-8473-4cc9bc3b8c1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\IO">
+      <UniqueIdentifier>{b7192bc6-c602-4b14-8a29-b664b38018b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lab1.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="CCanvasAdapter.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="CCircle.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="CLineSegment.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="CPoint.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="CRectangle.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="CShapeController.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="CShapeDrawer.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="CShapeParser.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Shapes</Filter>
     </ClCompile>
     <ClCompile Include="CTriangle.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Shapes</Filter>
     </ClCompile>
-    <ClCompile Include="ShapeFormatter.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="CRectangle.cpp">
+      <Filter>Исходные файлы\Shapes</Filter>
     </ClCompile>
-    <ClCompile Include="CShapeApp.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="CLineSegment.cpp">
+      <Filter>Исходные файлы\Shapes</Filter>
     </ClCompile>
     <ClCompile Include="CCompositeShape.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="CApplication.cpp">
+      <Filter>Исходные файлы\App</Filter>
+    </ClCompile>
+    <ClCompile Include="CAddShapeCommand.cpp">
+      <Filter>Исходные файлы\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="CModifyShapesCommand.cpp">
+      <Filter>Исходные файлы\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="CPoint.cpp">
+      <Filter>Исходные файлы\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="CShapeDrawer.cpp">
+      <Filter>Исходные файлы\Canvas</Filter>
+    </ClCompile>
+    <ClCompile Include="CShapeParser.cpp">
+      <Filter>Исходные файлы\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeFormatter.cpp">
+      <Filter>Исходные файлы\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="CCanvasAdapter.cpp">
+      <Filter>Исходные файлы\Canvas</Filter>
+    </ClCompile>
+    <ClCompile Include="CButton.cpp">
+      <Filter>Исходные файлы\Toolbar</Filter>
+    </ClCompile>
+    <ClCompile Include="CToolState.cpp">
+      <Filter>Исходные файлы\Toolbar</Filter>
+    </ClCompile>
+    <ClCompile Include="CToolbar.cpp">
+      <Filter>Исходные файлы\Toolbar</Filter>
     </ClCompile>
     <ClCompile Include="CSelectionController.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="CShapeController.cpp">
+      <Filter>Исходные файлы\IO</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CCanvasAdapter.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="CCircle.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="CLineSegment.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="CPoint.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="CRectangle.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="CShapeController.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="CShapeDrawer.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="CShapeParser.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="CTriangle.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="ICanvas.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="ICanvasDrawable.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="IShape.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="ISolidShape.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="consts.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="ShapeFormatter.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="CCircle.h">
+      <Filter>Файлы заголовков\Shapes</Filter>
     </ClInclude>
-    <ClInclude Include="CShapeApp.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="CTriangle.h">
+      <Filter>Файлы заголовков\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="CRectangle.h">
+      <Filter>Файлы заголовков\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="CLineSegment.h">
+      <Filter>Файлы заголовков\Shapes</Filter>
     </ClInclude>
     <ClInclude Include="CCompositeShape.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="CApplication.h">
+      <Filter>Файлы заголовков\App</Filter>
+    </ClInclude>
+    <ClInclude Include="CAddShapeCommand.h">
+      <Filter>Файлы заголовков\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="CCanvasAdapter.h">
+      <Filter>Файлы заголовков\Canvas</Filter>
+    </ClInclude>
+    <ClInclude Include="CButton.h">
+      <Filter>Файлы заголовков\Toolbar</Filter>
+    </ClInclude>
+    <ClInclude Include="CModifyShapesCommand.h">
+      <Filter>Файлы заголовков\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="CPoint.h">
+      <Filter>Файлы заголовков\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="qweqweqwewq.h">
+      <Filter>Файлы заголовков\App</Filter>
+    </ClInclude>
+    <ClInclude Include="CToolbar.h">
+      <Filter>Файлы заголовков\Toolbar</Filter>
+    </ClInclude>
+    <ClInclude Include="ICanvas.h">
+      <Filter>Файлы заголовков\Canvas</Filter>
+    </ClInclude>
+    <ClInclude Include="ICanvasDrawable.h">
+      <Filter>Файлы заголовков\Canvas</Filter>
+    </ClInclude>
+    <ClInclude Include="ICommand.h">
+      <Filter>Файлы заголовков\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="ISolidShape.h">
+      <Filter>Файлы заголовков\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="IShape.h">
+      <Filter>Файлы заголовков\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeFormatter.h">
+      <Filter>Файлы заголовков\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="CShapeParser.h">
+      <Filter>Файлы заголовков\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="CShapeDrawer.h">
+      <Filter>Файлы заголовков\Canvas</Filter>
     </ClInclude>
     <ClInclude Include="CSelectionController.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="CShapeController.h">
+      <Filter>Файлы заголовков\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="CToolState.h">
+      <Filter>Файлы заголовков\Toolbar</Filter>
+    </ClInclude>
+    <ClInclude Include="ITool.h">
+      <Filter>Файлы заголовков\Toolbar</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

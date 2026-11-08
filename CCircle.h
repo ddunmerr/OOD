@@ -26,9 +26,15 @@ public:
 	CRectD GetBounds() const override;
 	void Move(double dx, double dy) override;
 
+	void SetOutlineColor(uint32_t color) override;
+	void SetFillColor(uint32_t color) override;
+	void SetOutlineThickness(double thickness) override;
+
 private:
 	CPoint m_center;
 	double m_radius;
 	uint32_t m_outlineColor;
 	uint32_t m_fillColor;
+
+	double m_outlineThickness = 1.0;
 };

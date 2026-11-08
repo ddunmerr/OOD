@@ -26,7 +26,7 @@ std::string CLineSegment::ToString() const
 
 void CLineSegment::Draw(ICanvas& canvas) const
 {
-	canvas.DrawLine(m_startPoint, m_endPoint, m_outlineColor);
+	canvas.DrawLine(m_startPoint, m_endPoint, m_outlineColor, m_outlineThickness);
 }
 
 bool CLineSegment::ContainsPoint(const CPoint& point) const
@@ -84,3 +84,7 @@ CPoint CLineSegment::GetEndPoint() const
 {
 	return m_endPoint;
 }
+
+void CLineSegment::SetOutlineColor(uint32_t color) { m_outlineColor = color; }
+void CLineSegment::SetFillColor(uint32_t /*color*/) { /* линия без заливки */ }
+void CLineSegment::SetOutlineThickness(double /*thickness*/) { /* не хранится */ }

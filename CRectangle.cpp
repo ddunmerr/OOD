@@ -27,16 +27,9 @@ std::string CRectangle::ToString() const
 
 void CRectangle::Draw(ICanvas& canvas) const
 {
-	const CPoint rightTop(m_leftTop.GetX() + m_width, m_leftTop.GetY());
 	const CPoint rightBottom(m_leftTop.GetX() + m_width, m_leftTop.GetY() + m_height);
-	const CPoint leftBottom(m_leftTop.GetX(), m_leftTop.GetY() + m_height);
-
-	canvas.FillPolygon({ m_leftTop, rightTop, rightBottom, leftBottom }, m_fillColor);
-
-	canvas.DrawLine(m_leftTop, rightTop, m_outlineColor);
-	canvas.DrawLine(rightTop, rightBottom, m_outlineColor);
-	canvas.DrawLine(rightBottom, leftBottom, m_outlineColor);
-	canvas.DrawLine(leftBottom, m_leftTop, m_outlineColor);
+	canvas.FillRect(m_leftTop, rightBottom, m_fillColor);
+	canvas.DrawRect(m_leftTop, rightBottom, m_outlineColor, m_outlineThickness);
 }
 
 bool CRectangle::ContainsPoint(const CPoint& point) const
@@ -66,3 +59,7 @@ CPoint CRectangle::GetRightBottom() const
 
 double CRectangle::GetWidth() const { return m_width; }
 double CRectangle::GetHeight() const { return m_height; }
+
+void CRectangle::SetOutlineColor(uint32_t color) { m_outlineColor = color; }
+void CRectangle::SetFillColor(uint32_t color) { m_fillColor = color; }
+void CRectangle::SetOutlineThickness(double thickness) { m_outlineThickness = thickness; }

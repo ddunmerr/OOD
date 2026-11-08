@@ -96,3 +96,19 @@ const std::vector<std::unique_ptr<IShape>>& CCompositeShape::GetChildren() const
 {
 	return m_children;
 }
+
+void CCompositeShape::SetOutlineColor(uint32_t color)
+{
+	for (const auto& child : m_children)
+		child->SetOutlineColor(color);
+}
+void CCompositeShape::SetFillColor(uint32_t color)
+{
+	for (const auto& child : m_children)
+		child->SetFillColor(color);
+}
+void CCompositeShape::SetOutlineThickness(double thickness)
+{
+	for (const auto& child : m_children)
+		child->SetOutlineThickness(thickness);
+}

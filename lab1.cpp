@@ -1,10 +1,9 @@
-﻿#include "CShapeApp.h"
+﻿#include "CApplication.h"
 #include <iostream>
 
 int main()
 {
-	CShapeApp app(std::cin, std::cout);
-	app.Run();
+	Application::Instance().Run("input.txt");
 
 	return 0;
 }

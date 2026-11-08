@@ -17,6 +17,12 @@ public:
 
 	void DrawSelection(ICanvas& canvas) const;
 
+	const std::vector<IShape*>& GetSelected() const { return m_selectedShapes; }
+	std::vector<std::unique_ptr<IShape>>& GetShapes();
+	void DragSelected(double dx, double dy);
+	void SelectShapeAt(CPoint point, bool shiftPressed);
+	IShape* FindTopmostShapeAt(CPoint point) const;
+
 private:
 	CShapeController& m_shapeController;
 
@@ -25,12 +31,8 @@ private:
 	bool m_isDragging = false;
 	sf::Vector2f m_lastMousePos;
 
-	void SelectShapeAt(CPoint point, bool shiftPressed);
 	void ClearSelection();
 	void GroupSelected();
 	void UngroupSelected();
-	void DragSelected(double dx, double dy);
 	void RemoveInvalidSelection();
-
-	IShape* FindTopmostShapeAt(CPoint point) const;
 };

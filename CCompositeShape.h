@@ -27,6 +27,10 @@ public:
 	std::vector<std::unique_ptr<IShape>> ReleaseChildren();
 	const std::vector<std::unique_ptr<IShape>>& GetChildren() const;
 
+	void SetOutlineColor(uint32_t color) override;
+	void SetFillColor(uint32_t color) override;
+	void SetOutlineThickness(double thickness) override;
+
 private:
 	std::vector<std::unique_ptr<IShape>> m_children;
 	uint32_t m_outlineColor;

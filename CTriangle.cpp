@@ -49,10 +49,7 @@ uint32_t CTriangle::GetFillColor() const
 void CTriangle::Draw(ICanvas& canvas) const
 {
 	canvas.FillPolygon({ m_vertex1, m_vertex2, m_vertex3 }, m_fillColor);
-
-	canvas.DrawLine(m_vertex1, m_vertex2, m_outlineColor);
-	canvas.DrawLine(m_vertex2, m_vertex3, m_outlineColor);
-	canvas.DrawLine(m_vertex3, m_vertex1, m_outlineColor);
+	canvas.DrawPolygon({ m_vertex1, m_vertex2, m_vertex3 }, m_outlineColor, m_outlineThickness);
 }
 
 bool CTriangle::ContainsPoint(const CPoint& point) const
@@ -86,3 +83,7 @@ void CTriangle::Move(double dx, double dy)
 CPoint CTriangle::GetVertex1() const { return m_vertex1; }
 CPoint CTriangle::GetVertex2() const { return m_vertex2; }
 CPoint CTriangle::GetVertex3() const { return m_vertex3; }
+
+void CTriangle::SetOutlineColor(uint32_t color) { m_outlineColor = color; }
+void CTriangle::SetFillColor(uint32_t color) { m_fillColor = color; }
+void CTriangle::SetOutlineThickness(double thickness) { m_outlineThickness = thickness; }

@@ -21,4 +21,8 @@ public:
 	virtual bool ContainsPoint(const CPoint& point) const = 0;
 	virtual CRectD GetBounds() const = 0;
 	virtual void Move(double dx, double dy) = 0;
+
+	virtual void SetOutlineColor(uint32_t color) = 0;
+	virtual void SetFillColor(uint32_t color) = 0;
+	virtual void SetOutlineThickness(double thickness) = 0;
 };
