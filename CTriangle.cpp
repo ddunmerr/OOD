@@ -7,6 +7,7 @@ CTriangle::CTriangle(const CPoint& vertex1, const CPoint& vertex2, const CPoint&
 	, m_vertex3(vertex3)
 	, m_outlineColor(outlineColor)
 	, m_fillColor(fillColor)
+	, m_outlineThickness(THIN_THICKNESS)
 {
 }
 

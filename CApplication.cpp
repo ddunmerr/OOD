@@ -8,19 +8,17 @@ Application& Application::Instance()
 
 void Application::Run(const std::string& inputFile)
 {
-	// 1) Загружаем фигуры через контроллер (Fasade: вся логика чтения/вывода).
 	std::ifstream inFile(inputFile);
-	std::ofstream outFile("output.txt");
+	std::ofstream outFile(OUTPUT_FILE);
 	if (!inFile.is_open() || !outFile.is_open())
 	{
-		std::cerr << "Error opening files!" << std::endl;
+		std::cerr << ERROR_CANT_OPEN_FILES << std::endl;
 		return;
 	}
 	m_controller = std::make_unique<CShapeController>(inFile, outFile);
 	m_controller->Run();
 	m_shapes = m_controller->TakeShapes();
 
-	// 2) Окно.
 	m_window.create(
 		sf::VideoMode({ WIDTH, HEIGHT }),
 		WINDOW_TITLE);
@@ -29,7 +27,6 @@ void Application::Run(const std::string& inputFile)
 	m_selectionController = std::make_unique<CSelectionController>(*m_controller);
 	m_toolbar = std::make_unique<CToolbar>(*m_controller, *m_selectionController, *m_canvas);
 
-	// 3) Цикл.
 	while (m_window.isOpen())
 	{
 		ProcessEvents();

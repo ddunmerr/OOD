@@ -25,6 +25,9 @@ const std::string SEMICOLON_STRING = ";";
 const std::string PERIMETER_PREFIX = "P=";
 const std::string AREA_PREFIX = "S=";
 
+//
+const std::string OUTPUT_FILE = "output.txt";
+
 // Сообщения об ошибках
 const std::string ERROR_UNKNOWN_COMMAND = "Unknown command: ";
 const std::string ERROR_NO_SHAPES = "No shapes entered.";
@@ -32,13 +35,14 @@ const std::string ERROR_INVALID_POINT_PREFIX = "Invalid point prefix";
 const std::string ERROR_INVALID_X = "Invalid x coordinate";
 const std::string ERROR_INVALID_Y = "Invalid y coordinate";
 const std::string ERROR_INVALID_RADIUS = "Invalid radius";
+const std::string ERROR_CANT_OPEN_FILES = "Error opening files!";
 
 // Цвета по умолчанию
 const uint32_t DEFAULT_OUTLINE_COLOR = 0x000000;
 const uint32_t DEFAULT_FILL_COLOR = 0xFFF3FF;
 
 // Окно
-const int WIDTH = 800;
+const int WIDTH = 1280;
 const int HEIGHT = 600;
 const std::string WINDOW_TITLE = "Shapes";
 

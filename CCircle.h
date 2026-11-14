@@ -37,5 +37,5 @@ private:
 	uint32_t m_outlineColor;
 	uint32_t m_fillColor;
 
-	double m_outlineThickness;
+	double m_outlineThickness = 1;
 };

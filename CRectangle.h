@@ -38,6 +38,5 @@ private:
 	double m_height;
 	uint32_t m_outlineColor;
 	uint32_t m_fillColor;
-
 	double m_outlineThickness;
 };
