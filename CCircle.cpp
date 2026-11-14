@@ -1,5 +1,4 @@
 #include "CCircle.h"
-#include "ShapeFormatter.h"
 
 CCircle::CCircle(const CPoint& center, double radius,
 	uint32_t outlineColor, uint32_t fillColor)

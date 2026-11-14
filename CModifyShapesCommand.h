@@ -2,6 +2,7 @@
 #include "ICommand.h"
 #include "IShape.h"
 #include <functional>
+#include <utility>
 #include <vector>
 
 class CModifyShapesCommand : public ICommand

@@ -4,6 +4,7 @@ CLineSegment::CLineSegment(const CPoint& startPoint, const CPoint& endPoint, uin
 	: m_startPoint(startPoint)
 	, m_endPoint(endPoint)
 	, m_outlineColor(outlineColor)
+	, m_outlineThickness(THIN_THICKNESS)
 {
 }
 

@@ -9,44 +9,71 @@ void CSelectionController::HandleEvent(const sf::Event& event)
 {
 	if (auto* mp = event.getIf<sf::Event::MouseButtonPressed>())
 	{
-		if (mp->button != sf::Mouse::Button::Left)
-			return;
-		sf::Vector2f pos(static_cast<float>(mp->position.x),
-			static_cast<float>(mp->position.y));
-		bool shift = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift)
-			|| sf::Keyboard::isKeyPressed(sf::Keyboard::Key::RShift);
-		SelectShapeAt(CPoint(pos.x, pos.y), shift);
-		if (!m_selectedShapes.empty())
-		{
-			m_isDragging = true;
-			m_lastMousePos = pos;
-		}
+		HandleMouseButtonPressed(*mp);
 	}
 	else if (auto* mm = event.getIf<sf::Event::MouseMoved>())
 	{
-		if (!m_isDragging)
-			return;
-		sf::Vector2f pos(static_cast<float>(mm->position.x),
-			static_cast<float>(mm->position.y));
-		float dx = pos.x - m_lastMousePos.x;
-		float dy = pos.y - m_lastMousePos.y;
-		DragSelected(dx, dy);
-		m_lastMousePos = pos;
+		HandleMouseMoved(*mm);
 	}
 	else if (auto* mr = event.getIf<sf::Event::MouseButtonReleased>())
 	{
-		if (mr->button == sf::Mouse::Button::Left)
-			m_isDragging = false;
+		HandleMouseButtonReleased(*mr);
 	}
 	else if (auto* kp = event.getIf<sf::Event::KeyPressed>())
 	{
-		bool ctrl = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LControl)
-			|| sf::Keyboard::isKeyPressed(sf::Keyboard::Key::RControl);
-		if (ctrl && kp->code == sf::Keyboard::Key::G)
-			GroupSelected();
-		if (ctrl && kp->code == sf::Keyboard::Key::U)
-			UngroupSelected();
+		HandleKeyPressed(*kp);
 	}
+}
+
+void CSelectionController::HandleMouseButtonPressed(const sf::Event::MouseButtonPressed& mp)
+{
+	if (mp.button != sf::Mouse::Button::Left)
+	{
+		return;
+	}
+
+	sf::Vector2f pos(static_cast<float>(mp.position.x), static_cast<float>(mp.position.y));
+	bool shift = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::RShift);
+
+	SelectShapeAt(CPoint(pos.x, pos.y), shift);
+
+	if (!m_selectedShapes.empty())
+	{
+		m_isDragging = true;
+		m_lastMousePos = pos;
+	}
+}
+
+void CSelectionController::HandleMouseMoved(const sf::Event::MouseMoved& mm)
+{
+	if (!m_isDragging)
+	{
+		return;
+	}
+
+	sf::Vector2f pos(static_cast<float>(mm.position.x), static_cast<float>(mm.position.y));
+	float dx = pos.x - m_lastMousePos.x;
+	float dy = pos.y - m_lastMousePos.y;
+
+	DragSelected(dx, dy);
+	m_lastMousePos = pos;
+}
+
+void CSelectionController::HandleMouseButtonReleased(const sf::Event::MouseButtonReleased& mr)
+{
+	if (mr.button == sf::Mouse::Button::Left)
+		m_isDragging = false;
+}
+
+void CSelectionController::HandleKeyPressed(const sf::Event::KeyPressed& kp)
+{
+	bool ctrl = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LControl) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::RControl);
+
+	if (ctrl && kp.code == sf::Keyboard::Key::G)
+		GroupSelected();
+
+	if (ctrl && kp.code == sf::Keyboard::Key::U)
+		UngroupSelected();
 }
 
 void CSelectionController::DrawSelection(ICanvas& canvas) const

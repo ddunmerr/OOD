@@ -47,13 +47,87 @@ const int COLOR_RED_SHIFT = 16;
 const int COLOR_GREEN_SHIFT = 8;
 const int COLOR_BLUE_MASK = 0xFF;
 const int COLOR_CHANNEL_MASK = 0xFF;
-const float OUTLINE_THICKNESS = 1.0f;
 const int BACKGROUND_COLOR_R = 240;
 const int BACKGROUND_COLOR_G = 240;
 const int BACKGROUND_COLOR_B = 240;
+const int QUAD_POINTS_COUNT = 4;
+const int QUAD_FIRST_POINT = 0;
+const int QUAD_SECOND_POINT = 1;
+const int QUAD_THIRD_POINT = 2;
+const int QUAD_FOURTH_POINT = 3;
 
-// doubles and ints
+// ToolBar
+const int SF_GRAY = 80;
+const int FONT_SIZE = 14;
+const float BUTTON_OUTLINE_THICKNESS = 1.f;
+const float POSITION_HALF = 2.f;
+const float POSITION_QUARTER = 4.f;
+const std::string DEFAULT_FONT = "arial.ttf";
+
+constexpr std::uint8_t GET_RED(std::uint32_t rgb)
+{
+	return static_cast<std::uint8_t>((rgb >> 16) & 0xFF);
+}
+
+constexpr std::uint8_t GET_GREEN(std::uint32_t rgb)
+{
+	return static_cast<std::uint8_t>((rgb >> 8) & 0xFF);
+}
+
+constexpr std::uint8_t GET_BLUE(std::uint32_t rgb)
+{
+	return static_cast<std::uint8_t>(rgb & 0xFF);
+}
+const uint32_t PALETTE[] = {
+	0xFF0000, // красный
+	0x00C800, // зелЄный
+	0x0064FF, // синий
+	0xFFDC00, // жЄлтый
+	0x000000 // чЄрный
+};
+const std::size_t PALETTE_SIZE = 5;
+
+const std::string DRAG_BUTTON_LABEL = "D";
+const std::string FILL_BUTTON_LABEL = "F";
+const std::string TRIANGLE_BUTTON_LABEL = "T";
+const std::string RECTANGLE_BUTTON_LABEL = "R";
+const std::string CIRCLE_BUTTON_LABEL = "C";
+const std::string THIN_THICK_BUTTON_LABEL = "1";
+const std::string MID_THICK_BUTTON_LABEL = "3";
+const std::string FAT_BUTTON_LABEL = "5";
+
+const int THIN_THICKNESS = 1;
+const int MID_THICKNESS = 3;
+const int FAT_THICKNESS = 5;
+
+// ÷вета в формате 0xRRGGBB
+const uint32_t COLOR_DRAG = 0xB4DCFF;
+const uint32_t COLOR_FILL = 0xB4FFB4;
+const uint32_t COLOR_ADD = 0xFFDCB4;
+const uint32_t COLOR_THICK = 0xE6E6E6;
+
+const float BTN = 34.f;
+const float PAD = 6.f;
+const float Y = 6.f;
+const float BAR_HEIGHT = BTN + 2.f * PAD;
+
+const int BACKGROUND_GRAY = 230;
+const float TRIANGLE_DEFAULT_SIZE = 80.0f;
+const float TRIANGLE_OFFSET_X = 40.0f;
+const float RECTANGLE_DEFAULT_WIDTH = 100.0f;
+const float RECTANGLE_DEFAULT_HEIGHT = 60.0f;
+const float CIRCLE_DEFAULT_RADIUS = 40.0f;
+
+const int PALETTE_OUTLINE_START_INDEX = 5;
+const int PALETTE_FILL_START_INDEX = 10;
+const int THICKNESS_BUTTONS_START_INDEX = 15;
+
+const std::string DRAG_STATE = "Drag";
+const std::string FILL_STATE = "Fill";
+
+//  doubles and ints
 const int ZERO_INT = 0;
+const int MIN_POINTS = 3;
 const double ZERO_DOUBLE = 0.0;
 const double ONE_DOUBLE = 1.0;
 const double TWO_DOUBLE = 2.0;

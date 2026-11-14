@@ -176,7 +176,6 @@
     <ClInclude Include="CPoint.h" />
     <ClInclude Include="CRectangle.h" />
     <ClInclude Include="CSelectionController.h" />
-    <ClInclude Include="qweqweqwewq.h" />
     <ClInclude Include="CShapeController.h" />
     <ClInclude Include="CShapeDrawer.h" />
     <ClInclude Include="CShapeParser.h" />
@@ -188,7 +187,7 @@
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="IShape.h" />
     <ClInclude Include="ISolidShape.h" />
-    <ClInclude Include="ITool.h" />
+    <ClInclude Include="IToolState.h" />
     <ClInclude Include="ShapeFormatter.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

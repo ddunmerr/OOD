@@ -1,7 +1,10 @@
 #pragma once
+#include "consts.h"
 #include <SFML/Graphics.hpp>
 #include <functional>
+#include <iostream>
 #include <string>
+#include <utility>
 
 class CButton
 {

@@ -31,9 +31,6 @@
     <Filter Include="Исходные файлы\IO">
       <UniqueIdentifier>{8e7ca955-5522-4207-b4b3-0e55af82468e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Исходные файлы\Editor">
-      <UniqueIdentifier>{17806cc8-defa-47cf-a9e9-470d30bf12b6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Файлы заголовков\App">
       <UniqueIdentifier>{fbfd4ec1-a26e-4a16-830f-b198432d08d6}</UniqueIdentifier>
     </Filter>
@@ -43,9 +40,6 @@
     <Filter Include="Файлы заголовков\Canvas">
       <UniqueIdentifier>{ce128366-8159-4c15-883d-dfe7a8603795}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков\Editor">
-      <UniqueIdentifier>{1b0c0833-0098-4b32-b9e4-5253e02aa6f7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Файлы заголовков\Toolbar">
       <UniqueIdentifier>{2d71f0ff-369c-4c81-9918-bc2d550045fe}</UniqueIdentifier>
     </Filter>
@@ -54,6 +48,12 @@
     </Filter>
     <Filter Include="Файлы заголовков\IO">
       <UniqueIdentifier>{b7192bc6-c602-4b14-8a29-b664b38018b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Selection">
+      <UniqueIdentifier>{1b0c0833-0098-4b32-b9e4-5253e02aa6f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Selection">
+      <UniqueIdentifier>{17806cc8-defa-47cf-a9e9-470d30bf12b6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -109,7 +109,7 @@
       <Filter>Исходные файлы\Toolbar</Filter>
     </ClCompile>
     <ClCompile Include="CSelectionController.cpp">
-      <Filter>Исходные файлы\Editor</Filter>
+      <Filter>Исходные файлы\Selection</Filter>
     </ClCompile>
     <ClCompile Include="CShapeController.cpp">
       <Filter>Исходные файлы\IO</Filter>
@@ -155,9 +155,6 @@
     <ClInclude Include="CPoint.h">
       <Filter>Файлы заголовков\Shapes</Filter>
     </ClInclude>
-    <ClInclude Include="qweqweqwewq.h">
-      <Filter>Файлы заголовков\App</Filter>
-    </ClInclude>
     <ClInclude Include="CToolbar.h">
       <Filter>Файлы заголовков\Toolbar</Filter>
     </ClInclude>
@@ -186,7 +183,7 @@
       <Filter>Файлы заголовков\Canvas</Filter>
     </ClInclude>
     <ClInclude Include="CSelectionController.h">
-      <Filter>Файлы заголовков\Editor</Filter>
+      <Filter>Файлы заголовков\Selection</Filter>
     </ClInclude>
     <ClInclude Include="CShapeController.h">
       <Filter>Файлы заголовков\IO</Filter>
@@ -194,7 +191,7 @@
     <ClInclude Include="CToolState.h">
       <Filter>Файлы заголовков\Toolbar</Filter>
     </ClInclude>
-    <ClInclude Include="ITool.h">
+    <ClInclude Include="IToolState.h">
       <Filter>Файлы заголовков\Toolbar</Filter>
     </ClInclude>
   </ItemGroup>

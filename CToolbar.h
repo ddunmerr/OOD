@@ -1,10 +1,18 @@
 #pragma once
 #include "CButton.h"
+#include "CCanvasAdapter.h"
+#include "CCircle.h"
+#include "CModifyShapesCommand.h"
+#include "CRectangle.h"
+#include "CSelectionController.h"
+#include "CShapeController.h"
 #include "CToolState.h"
-#include "ITool.h"
+#include "CTriangle.h"
+#include "IToolState.h"
 #include "consts.h"
 #include <functional>
 #include <memory>
+#include <utility>
 #include <vector>
 
 class CShapeController;
@@ -23,23 +31,19 @@ public:
 
 	bool IsFillMode() const { return m_isFillMode; }
 
-	// void SetOutlineColor(uint32_t color);
-	// void SetFillColor(uint32_t color);
-	// void SetThickness(double t);
-
 	uint32_t GetOutlineColor() const { return m_currentOutlineColor; }
 	uint32_t GetFillColor() const { return m_currentFillColor; }
 	double GetThickness() const { return m_currentThickness; }
 
 private:
 	void BuildButtons();
-	void SetTool(std::unique_ptr<ITool> tool);
+	void SetTool(std::unique_ptr<IToolState> tool);
 
 	CShapeController& m_controller;
 	CSelectionController& m_selection;
 	CCanvasAdapter& m_canvas;
 
-	std::unique_ptr<ITool> m_tool;
+	std::unique_ptr<IToolState> m_tool;
 	std::vector<std::unique_ptr<CButton>> m_buttons;
 	bool m_isFillMode = false;
 

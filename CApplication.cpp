@@ -1,13 +1,4 @@
 #include "CApplication.h"
-#include "consts.h"
-#include <fstream>
-#include <iostream>
-#include <utility>
-
-namespace
-{
-const sf::Color BACKGROUND_COLOR(BACKGROUND_COLOR_R, BACKGROUND_COLOR_G, BACKGROUND_COLOR_B);
-} // namespace
 
 Application& Application::Instance()
 {
@@ -55,7 +46,7 @@ void Application::ProcessEvents()
 
 void Application::Render()
 {
-	m_window.clear(BACKGROUND_COLOR);
+	m_window.clear(sf::Color(BACKGROUND_COLOR_R, BACKGROUND_COLOR_G, BACKGROUND_COLOR_B));
 	CShapeDrawer::DrawAll(m_controller->GetShapes(), *m_canvas);
 	m_selectionController->DrawSelection(*m_canvas);
 	m_toolbar->Draw(m_window);

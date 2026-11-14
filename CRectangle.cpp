@@ -7,6 +7,7 @@ CRectangle::CRectangle(const CPoint& leftTop, double width, double height,
 	, m_height(height)
 	, m_outlineColor(outlineColor)
 	, m_fillColor(fillColor)
+	, m_outlineThickness(THIN_THICKNESS)
 {
 }
 

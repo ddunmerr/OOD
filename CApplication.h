@@ -1,15 +1,18 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <memory>
-#include <string>
-#include <vector>
-
 #include "CCanvasAdapter.h"
 #include "CSelectionController.h"
 #include "CShapeController.h"
 #include "CShapeDrawer.h"
 #include "CToolbar.h"
 #include "IShape.h"
+#include "consts.h"
+#include <SFML/Graphics.hpp>
+#include <fstream>
+#include <iostream>
+#include <memory>
+#include <string>
+#include <utility>
+#include <vector>
 
 class Application
 {

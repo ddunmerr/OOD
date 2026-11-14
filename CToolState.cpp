@@ -1,9 +1,4 @@
 #include "CToolState.h"
-#include "CAddShapeCommand.h"
-#include "CSelectionController.h"
-#include "CToolbar.h"
-#include "consts.h"
-#include <utility>
 
 CToolState::CToolState(std::string name, bool isDragMode, PressAction onPressed)
 	: m_name(std::move(name))
@@ -19,8 +14,6 @@ bool CToolState::HandleEvent(const sf::Event& event, CSelectionController& edito
 	{
 		if (mp->button != sf::Mouse::Button::Left)
 			return false;
-		std::cout << "[CToolState::HandleEvent] name=" << m_name
-				  << " creator=" << (m_creator ? "yes" : "no") << std::endl;
 		sf::Vector2f pos(static_cast<float>(mp->position.x),
 			static_cast<float>(mp->position.y));
 
@@ -34,6 +27,12 @@ bool CToolState::HandleEvent(const sf::Event& event, CSelectionController& edito
 			}
 			return true;
 		}
+		if (m_onPressed)
+		{
+			bool shift = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift)
+				|| sf::Keyboard::isKeyPressed(sf::Keyboard::Key::RShift);
+			return m_onPressed(editor, pos, shift);
+		}
 	}
 	return false;
 }
@@ -42,12 +41,7 @@ std::string CToolState::GetName() const { return m_name; }
 
 std::unique_ptr<CToolState> CToolState::CreateDrag()
 {
-	return std::make_unique<CToolState>(
-		"Drag", true,
-		[](CSelectionController& editor, sf::Vector2f pos, bool shift) -> bool {
-			editor.SelectShapeAt(CPoint(pos.x, pos.y), shift);
-			return true;
-		});
+	return std::make_unique<CToolState>(DRAG_STATE, true, nullptr);
 }
 
 std::unique_ptr<CToolState> CToolState::CreateFill(
@@ -56,7 +50,7 @@ std::unique_ptr<CToolState> CToolState::CreateFill(
 	std::function<double()> getThickness)
 {
 	return std::make_unique<CToolState>(
-		"Fill", false,
+		FILL_STATE, false,
 		[getOutlineColor, getFillColor, getThickness](
 			CSelectionController& editor, sf::Vector2f pos, bool /*shift*/) -> bool {
 			IShape* hit = editor.FindTopmostShapeAt(CPoint(pos.x, pos.y));

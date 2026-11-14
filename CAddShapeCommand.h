@@ -1,7 +1,9 @@
 #pragma once
 #include "ICommand.h"
 #include "IShape.h"
+#include <iostream>
 #include <memory>
+#include <utility>
 #include <vector>
 
 class CAddShapeCommand : public ICommand

@@ -263,7 +263,7 @@
             "d:\\sfml-3.1.0\\include\\sfml\\system\\sleep.hpp",
             "d:\\sfml-3.1.0\\include\\sfml\\system\\timeoutwithpredicate.hpp",
             "d:\\sfml-3.1.0\\include\\sfml\\system\\version.hpp",
-            "d:\\labs\\ood\\ood\\itool.h",
+            "d:\\labs\\ood\\ood\\itoolstate.h",
             "d:\\labs\\ood\\ood\\caddshapecommand.h",
             "d:\\labs\\ood\\ood\\icommand.h",
             "d:\\labs\\ood\\ood\\ishape.h",
@@ -272,6 +272,7 @@
             "d:\\labs\\ood\\ood\\cpoint.h",
             "d:\\labs\\ood\\ood\\stdafx.h",
             "d:\\labs\\ood\\ood\\consts.h",
+            "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\iostream",
             "d:\\labs\\ood\\ood\\cselectioncontroller.h",
             "d:\\labs\\ood\\ood\\ccompositeshape.h",
             "d:\\labs\\ood\\ood\\isolidshape.h",
@@ -283,9 +284,10 @@
             "d:\\labs\\ood\\ood\\shapeformatter.h",
             "d:\\labs\\ood\\ood\\crectangle.h",
             "d:\\labs\\ood\\ood\\ctriangle.h",
-            "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\iostream",
             "d:\\labs\\ood\\ood\\ctoolbar.h",
-            "d:\\labs\\ood\\ood\\cbutton.h"
+            "d:\\labs\\ood\\ood\\cbutton.h",
+            "d:\\labs\\ood\\ood\\ccanvasadapter.h",
+            "d:\\labs\\ood\\ood\\cmodifyshapescommand.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

@@ -1,15 +1,19 @@
 #pragma once
+#include "CAddShapeCommand.h"
+#include "CSelectionController.h"
+#include "CToolbar.h"
+#include "IToolState.h"
+#include "consts.h"
 #include <SFML/Graphics.hpp>
 #include <functional>
 #include <memory>
 #include <string>
-
-#include "ITool.h"
+#include <utility>
 
 class CSelectionController;
 class IShape;
 
-class CToolState : public ITool
+class CToolState : public IToolState
 {
 public:
 	using PressAction = std::function<bool(CSelectionController&, sf::Vector2f, bool)>;
@@ -32,7 +36,6 @@ private:
 	bool m_isDragMode;
 	PressAction m_onPressed;
 	Creator m_creator;
-
 	bool m_isDragging = false;
 	sf::Vector2f m_lastMousePos;
 };
