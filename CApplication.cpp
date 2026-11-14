@@ -9,7 +9,14 @@ Application& Application::Instance()
 void Application::Run(const std::string& inputFile)
 {
 	// 1) Загружаем фигуры через контроллер (Fasade: вся логика чтения/вывода).
-	m_controller = std::make_unique<CShapeController>(std::cin, std::cout);
+	std::ifstream inFile(inputFile);
+	std::ofstream outFile("output.txt");
+	if (!inFile.is_open() || !outFile.is_open())
+	{
+		std::cerr << "Error opening files!" << std::endl;
+		return;
+	}
+	m_controller = std::make_unique<CShapeController>(inFile, outFile);
 	m_controller->Run();
 	m_shapes = m_controller->TakeShapes();
 

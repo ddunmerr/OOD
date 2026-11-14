@@ -120,7 +120,7 @@ void CSelectionController::SelectShapeAt(CPoint point, bool shiftPressed)
 
 	if (!shiftPressed)
 	{
-		m_selectedShapes.clear();
+		ClearSelection();
 	}
 
 	if (hit == nullptr)
@@ -170,7 +170,7 @@ void CSelectionController::GroupSelected()
 
 	shapes.push_back(std::move(composite));
 
-	m_selectedShapes.clear();
+	ClearSelection();
 	m_selectedShapes.push_back(shapes.back().get());
 }
 
@@ -205,7 +205,7 @@ void CSelectionController::UngroupSelected()
 		shapes.push_back(std::move(child));
 	}
 
-	m_selectedShapes.clear();
+	ClearSelection();
 }
 
 void CSelectionController::DragSelected(double dx, double dy)
@@ -214,19 +214,6 @@ void CSelectionController::DragSelected(double dx, double dy)
 	{
 		shape->Move(dx, dy);
 	}
-}
-
-void CSelectionController::RemoveInvalidSelection()
-{
-	const auto& shapes = m_shapeController.GetShapes();
-	m_selectedShapes.erase(
-		std::remove_if(m_selectedShapes.begin(), m_selectedShapes.end(),
-			[&shapes](IShape* s) {
-				return std::find_if(shapes.begin(), shapes.end(),
-						   [s](const std::unique_ptr<IShape>& up) { return up.get() == s; })
-					== shapes.end();
-			}),
-		m_selectedShapes.end());
 }
 
 std::vector<std::unique_ptr<IShape>>& CSelectionController::GetShapes()

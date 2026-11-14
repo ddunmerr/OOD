@@ -55,11 +55,16 @@ std::unique_ptr<CToolState> CToolState::CreateFill(
 			CSelectionController& editor, sf::Vector2f pos, bool /*shift*/) -> bool {
 			IShape* hit = editor.FindTopmostShapeAt(CPoint(pos.x, pos.y));
 			if (!hit)
+			{
 				return false;
+			}
 
-			hit->SetOutlineColor(getOutlineColor());
-			hit->SetFillColor(getFillColor());
-			hit->SetOutlineThickness(getThickness());
+			CModifyShapesCommand cmd({ hit }, [&](IShape* s) {
+				s->SetOutlineColor(getOutlineColor());
+				s->SetFillColor(getFillColor());
+				s->SetOutlineThickness(getThickness());
+			});
+			cmd.Execute();
 
 			return true;
 		});
