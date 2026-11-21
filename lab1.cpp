@@ -1,9 +1,9 @@
-﻿#include "CApplication.h"
+﻿#include "CApplicationSingletone.h"
 #include <iostream>
 
 int main()
 {
-	Application::Instance().Run("input.txt");
+	CApplicationSingletone::Instance().Run(INPUT_FILE);
 
 	return 0;
 }

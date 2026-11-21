@@ -75,7 +75,7 @@
     <ClCompile Include="CCompositeShape.cpp">
       <Filter>Исходные файлы\Shapes</Filter>
     </ClCompile>
-    <ClCompile Include="CApplication.cpp">
+    <ClCompile Include="CApplicationSingletone.cpp">
       <Filter>Исходные файлы\App</Filter>
     </ClCompile>
     <ClCompile Include="CAddShapeCommand.cpp">
@@ -137,7 +137,7 @@
     <ClInclude Include="CCompositeShape.h">
       <Filter>Файлы заголовков\Shapes</Filter>
     </ClInclude>
-    <ClInclude Include="CApplication.h">
+    <ClInclude Include="CApplicationSingletone.h">
       <Filter>Файлы заголовков\App</Filter>
     </ClInclude>
     <ClInclude Include="CAddShapeCommand.h">

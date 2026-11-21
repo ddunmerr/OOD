@@ -1,12 +1,12 @@
-#include "CApplication.h"
+#include "CApplicationSingletone.h"
 
-Application& Application::Instance()
+CApplicationSingletone& CApplicationSingletone::Instance()
 {
-	static Application instance;
+	static CApplicationSingletone instance;
 	return instance;
 }
 
-void Application::Run(const std::string& inputFile)
+void CApplicationSingletone::Run(const std::string& inputFile)
 {
 	std::ifstream inFile(inputFile);
 	std::ofstream outFile(OUTPUT_FILE);
@@ -34,7 +34,7 @@ void Application::Run(const std::string& inputFile)
 	}
 }
 
-void Application::ProcessEvents()
+void CApplicationSingletone::ProcessEvents()
 {
 	while (auto event = m_window.pollEvent())
 	{
@@ -48,7 +48,7 @@ void Application::ProcessEvents()
 	}
 }
 
-void Application::Render()
+void CApplicationSingletone::Render()
 {
 	m_window.clear(sf::Color(BACKGROUND_COLOR_R, BACKGROUND_COLOR_G, BACKGROUND_COLOR_B));
 	CShapeDrawer::DrawAll(m_controller->GetShapes(), *m_canvas);

@@ -14,17 +14,17 @@
 #include <utility>
 #include <vector>
 
-class Application
+class CApplicationSingletone
 {
 public:
-	static Application& Instance();
+	static CApplicationSingletone& Instance();
 
 	void Run(const std::string& inputFile);
 
 private:
-	Application() = default;
-	Application(const Application&) = delete;
-	Application& operator=(const Application&) = delete;
+	CApplicationSingletone() = default;
+	CApplicationSingletone(const CApplicationSingletone&) = delete;
+	CApplicationSingletone& operator=(const CApplicationSingletone&) = delete;
 
 	void ProcessEvents();
 	void Render();

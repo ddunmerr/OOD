@@ -26,6 +26,7 @@ const std::string PERIMETER_PREFIX = "P=";
 const std::string AREA_PREFIX = "S=";
 
 //
+const std::string INPUT_FILE = "input.txt";
 const std::string OUTPUT_FILE = "output.txt";
 
 // Сообщения об ошибках

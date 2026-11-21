@@ -38,5 +38,4 @@ private:
 	void ClearSelection();
 	void GroupSelected();
 	void UngroupSelected();
-	void RemoveInvalidSelection();
 };

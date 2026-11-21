@@ -9,11 +9,12 @@ CToolState::CToolState(std::string name, bool isDragMode, PressAction onPressed)
 
 bool CToolState::HandleEvent(const sf::Event& event, CSelectionController& editor)
 {
-
 	if (auto* mp = event.getIf<sf::Event::MouseButtonPressed>())
 	{
 		if (mp->button != sf::Mouse::Button::Left)
+		{
 			return false;
+		}
 		sf::Vector2f pos(static_cast<float>(mp->position.x),
 			static_cast<float>(mp->position.y));
 
@@ -36,8 +37,6 @@ bool CToolState::HandleEvent(const sf::Event& event, CSelectionController& edito
 	}
 	return false;
 }
-
-std::string CToolState::GetName() const { return m_name; }
 
 std::unique_ptr<CToolState> CToolState::CreateDrag()
 {

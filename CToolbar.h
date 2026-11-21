@@ -49,5 +49,5 @@ private:
 
 	uint32_t m_currentOutlineColor = DEFAULT_OUTLINE_COLOR;
 	uint32_t m_currentFillColor = DEFAULT_FILL_COLOR;
-	double m_currentThickness = 1.0;
+	double m_currentThickness = THIN_THICKNESS;
 };

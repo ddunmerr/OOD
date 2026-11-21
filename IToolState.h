@@ -12,5 +12,4 @@ public:
 	virtual bool HandleEvent(const sf::Event& event,
 		CSelectionController& editor)
 		= 0;
-	virtual std::string GetName() const = 0;
 };

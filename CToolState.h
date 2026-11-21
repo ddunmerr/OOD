@@ -10,9 +10,6 @@
 #include <string>
 #include <utility>
 
-class CSelectionController;
-class IShape;
-
 class CToolState : public IToolState
 {
 public:
@@ -22,7 +19,6 @@ public:
 	CToolState(std::string name, bool isDragMode, PressAction onPressed);
 
 	bool HandleEvent(const sf::Event& event, CSelectionController& editor) override;
-	std::string GetName() const override;
 
 	static std::unique_ptr<CToolState> CreateDrag();
 	static std::unique_ptr<CToolState> CreateFill(
@@ -36,6 +32,4 @@ private:
 	bool m_isDragMode;
 	PressAction m_onPressed;
 	Creator m_creator;
-	bool m_isDragging = false;
-	sf::Vector2f m_lastMousePos;
 };
