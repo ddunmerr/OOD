@@ -144,13 +144,12 @@
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\__msvc_bit_utils.hpp",
             "d:\\labs\\ood\\ood\\shapeformatter.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\numbers",
-            "d:\\labs\\ood\\ood\\clinesegment.h",
+            "d:\\labs\\ood\\ood\\crectangle.h",
+            "d:\\labs\\ood\\ood\\ctriangle.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\algorithm",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\__msvc_heap_algorithms.hpp",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\__msvc_int128.hpp",
-            "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\__msvc_minmax.hpp",
-            "d:\\labs\\ood\\ood\\crectangle.h",
-            "d:\\labs\\ood\\ood\\ctriangle.h"
+            "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\__msvc_minmax.hpp"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

@@ -5,7 +5,6 @@
 const std::string TRIANGLE_STRING = "TRIANGLE";
 const std::string RECTANGLE_STRING = "RECTANGLE";
 const std::string CIRCLE_STRING = "CIRCLE";
-const std::string LINE_SEGMENT_STRING = "LINE";
 
 // Префиксы координат
 const std::string PREFIX_P1 = "P1";

@@ -69,9 +69,6 @@
     <ClCompile Include="CRectangle.cpp">
       <Filter>Исходные файлы\Shapes</Filter>
     </ClCompile>
-    <ClCompile Include="CLineSegment.cpp">
-      <Filter>Исходные файлы\Shapes</Filter>
-    </ClCompile>
     <ClCompile Include="CCompositeShape.cpp">
       <Filter>Исходные файлы\Shapes</Filter>
     </ClCompile>
@@ -135,9 +132,6 @@
       <Filter>Файлы заголовков\Shapes</Filter>
     </ClInclude>
     <ClInclude Include="CRectangle.h">
-      <Filter>Файлы заголовков\Shapes</Filter>
-    </ClInclude>
-    <ClInclude Include="CLineSegment.h">
       <Filter>Файлы заголовков\Shapes</Filter>
     </ClInclude>
     <ClInclude Include="CCompositeShape.h">

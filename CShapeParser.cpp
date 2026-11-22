@@ -88,14 +88,6 @@ std::unique_ptr<IShape> CShapeParser::ParseCommand(const std::string& line)
 
 		return std::make_unique<CCircle>(center, radius, DEFAULT_OUTLINE_COLOR, DEFAULT_FILL_COLOR);
 	}
-	else if (shapeType == LINE_SEGMENT_STRING)
-	{
-		CPoint p1 = ParsePoint(iss, PREFIX_P1);
-		SkipSeparator(iss);
-		CPoint p2 = ParsePoint(iss, PREFIX_P2);
-
-		return std::make_unique<CLineSegment>(p1, p2, DEFAULT_OUTLINE_COLOR);
-	}
 
 	return nullptr;
 }

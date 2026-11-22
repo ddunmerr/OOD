@@ -152,7 +152,6 @@
     <ClCompile Include="CCompositeShape.cpp" />
     <ClCompile Include="CDragState.cpp" />
     <ClCompile Include="CFillState.cpp" />
-    <ClCompile Include="CLineSegment.cpp" />
     <ClCompile Include="CModifyShapesCommand.cpp" />
     <ClCompile Include="CPoint.cpp" />
     <ClCompile Include="CRectangle.cpp" />
@@ -175,7 +174,6 @@
     <ClInclude Include="CCompositeShape.h" />
     <ClInclude Include="CDragState.h" />
     <ClInclude Include="CFillState.h" />
-    <ClInclude Include="CLineSegment.h" />
     <ClInclude Include="CModifyShapesCommand.h" />
     <ClInclude Include="consts.h" />
     <ClInclude Include="CPoint.h" />
