@@ -1,7 +1,7 @@
 #include "CDragState.h"
 #include "CSelectionController.h"
 
-bool CDragState::HandleEvent(const sf::Event& event, CSelectionController& editor)
+bool CDragState::HandleEvent(const sf::Event& event, CSelectionController& selection)
 {
 	if (auto* mp = event.getIf<sf::Event::MouseButtonPressed>())
 	{
@@ -10,7 +10,7 @@ bool CDragState::HandleEvent(const sf::Event& event, CSelectionController& edito
 			sf::Vector2f pos(static_cast<float>(mp->position.x), static_cast<float>(mp->position.y));
 
 			// Проверяем, что клик в рабочей области и есть выделенные фигуры
-			if (mp->position.y >= BAR_HEIGHT && !editor.GetSelected().empty())
+			if (mp->position.y >= BAR_HEIGHT && !selection.GetSelected().empty())
 			{
 				m_isDragging = true;
 				m_lastMousePos = pos;
@@ -27,7 +27,7 @@ bool CDragState::HandleEvent(const sf::Event& event, CSelectionController& edito
 			float dy = pos.y - m_lastMousePos.y;
 
 			// Перемещаем выделенные фигуры
-			for (IShape* shape : editor.GetSelected())
+			for (IShape* shape : selection.GetSelected())
 			{
 				shape->Move(dx, dy);
 			}

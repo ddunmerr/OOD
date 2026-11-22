@@ -10,7 +10,7 @@ public:
 	using ThicknessGetter = std::function<double()>;
 
 	CFillState(ColorGetter getOutline, ColorGetter getFill, ThicknessGetter getThickness);
-	bool HandleEvent(const sf::Event& event, CSelectionController& editor) override;
+	bool HandleEvent(const sf::Event& event, CSelectionController& selection) override;
 
 private:
 	ColorGetter m_getOutlineColor;

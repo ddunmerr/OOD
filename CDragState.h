@@ -5,7 +5,7 @@ class CDragState : public IToolState
 {
 public:
 	CDragState() = default;
-	bool HandleEvent(const sf::Event& event, CSelectionController& editor) override;
+	bool HandleEvent(const sf::Event& event, CSelectionController& selection) override;
 
 private:
 	bool m_isDragging = false;

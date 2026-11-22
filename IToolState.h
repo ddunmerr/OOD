@@ -10,6 +10,6 @@ public:
 	virtual ~IToolState() = default;
 
 	virtual bool HandleEvent(const sf::Event& event,
-		CSelectionController& editor)
+		CSelectionController& selection)
 		= 0;
 };
