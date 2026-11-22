@@ -30,7 +30,6 @@ private:
 	void Render();
 
 	sf::RenderWindow m_window;
-	std::vector<std::unique_ptr<IShape>> m_shapes;
 	std::unique_ptr<CShapeController> m_controller;
 	std::unique_ptr<CSelectionController> m_selectionController;
 	std::unique_ptr<CToolbar> m_toolbar;

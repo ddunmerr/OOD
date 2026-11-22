@@ -27,10 +27,10 @@ bool CDragState::HandleEvent(const sf::Event& event, CSelectionController& selec
 			float dy = pos.y - m_lastMousePos.y;
 
 			// Перемещаем выделенные фигуры
-			for (IShape* shape : selection.GetSelected())
-			{
-				shape->Move(dx, dy);
-			}
+			std::for_each(selection.GetSelected().begin(), selection.GetSelected().end(),
+				[dx, dy](IShape* shape) {
+					shape->Move(dx, dy);
+				});
 
 			m_lastMousePos = pos;
 			return true;

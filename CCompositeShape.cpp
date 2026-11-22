@@ -1,4 +1,5 @@
 #include "CCompositeShape.h"
+#include <algorithm>
 
 CCompositeShape::CCompositeShape(uint32_t outlineColor, uint32_t fillColor)
 	: m_outlineColor(outlineColor)
@@ -44,14 +45,10 @@ void CCompositeShape::Draw(ICanvas& canvas) const
 
 bool CCompositeShape::ContainsPoint(const CPoint& point) const
 {
-	for (const auto& child : m_children)
-	{
-		if (child->ContainsPoint(point))
-		{
-			return true;
-		}
-	}
-	return false;
+	return std::any_of(m_children.begin(), m_children.end(),
+		[&point](const auto& child) {
+			return child->ContainsPoint(point);
+		});
 }
 
 CRectD CCompositeShape::GetBounds() const
@@ -76,10 +73,10 @@ CRectD CCompositeShape::GetBounds() const
 
 void CCompositeShape::Move(double dx, double dy)
 {
-	for (const auto& child : m_children)
-	{
-		child->Move(dx, dy);
-	}
+	std::for_each(m_children.begin(), m_children.end(),
+		[dx, dy](const auto& child) {
+			child->Move(dx, dy);
+		});
 }
 
 void CCompositeShape::Add(std::unique_ptr<IShape> shape)
@@ -99,22 +96,23 @@ const std::vector<std::unique_ptr<IShape>>& CCompositeShape::GetChildren() const
 
 void CCompositeShape::SetOutlineColor(uint32_t color)
 {
-	for (const auto& child : m_children)
-	{
-		child->SetOutlineColor(color);
-	}
+	std::for_each(m_children.begin(), m_children.end(),
+		[color](const auto& child) {
+			child->SetOutlineColor(color);
+		});
 }
 void CCompositeShape::SetFillColor(uint32_t color)
 {
-	for (const auto& child : m_children)
-	{
-		child->SetFillColor(color);
-	}
+	std::for_each(m_children.begin(), m_children.end(),
+		[color](const auto& child) {
+			child->SetFillColor(color);
+		});
 }
 void CCompositeShape::SetOutlineThickness(double thickness)
 {
-	for (const auto& child : m_children)
-	{
-		child->SetOutlineThickness(thickness);
-	}
+
+	std::for_each(m_children.begin(), m_children.end(),
+		[thickness](const auto& child) {
+			child->SetOutlineThickness(thickness);
+		});
 }

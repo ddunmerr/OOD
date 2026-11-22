@@ -74,14 +74,12 @@ void CSelectionController::DrawSelection(ICanvas& canvas) const
 IShape* CSelectionController::FindTopmostShapeAt(CPoint point) const
 {
 	const auto& shapes = m_shapeController.GetShapes();
-	for (auto it = shapes.rbegin(); it != shapes.rend(); ++it)
-	{
-		if ((*it)->ContainsPoint(point))
-		{
-			return it->get();
-		}
-	}
-	return nullptr;
+	auto it = std::find_if(shapes.rbegin(), shapes.rend(),
+		[&point](const auto& shape) {
+			return shape->ContainsPoint(point);
+		});
+
+	return (it != shapes.rend()) ? it->get() : nullptr;
 }
 
 void CSelectionController::SelectShapeAt(CPoint point, bool shiftPressed)
@@ -122,24 +120,22 @@ void CSelectionController::GroupSelected()
 	}
 
 	auto composite = std::make_unique<CCompositeShape>();
-
 	auto& shapes = m_shapeController.GetShapes();
-	for (auto it = shapes.begin(); it != shapes.end();)
+
+	auto partitionPoint = std::partition(shapes.begin(), shapes.end(),
+		[this](const auto& shape) {
+			return std::find(m_selectedShapes.begin(), m_selectedShapes.end(), shape.get())
+				!= m_selectedShapes.end();
+		});
+
+	for (auto it = shapes.begin(); it != partitionPoint; ++it)
 	{
-		auto* raw = it->get();
-		if (std::find(m_selectedShapes.begin(), m_selectedShapes.end(), raw) != m_selectedShapes.end())
-		{
-			composite->Add(std::move(*it));
-			it = shapes.erase(it);
-		}
-		else
-		{
-			++it;
-		}
+		composite->Add(std::move(*it));
 	}
 
-	shapes.push_back(std::move(composite));
+	shapes.erase(shapes.begin(), partitionPoint);
 
+	shapes.push_back(std::move(composite));
 	m_selectedShapes.clear();
 	m_selectedShapes.push_back(shapes.back().get());
 }

@@ -17,7 +17,6 @@ void CApplicationSingletone::Run(const std::string& inputFile)
 	}
 	m_controller = std::make_unique<CShapeController>(inFile, outFile);
 	m_controller->Run();
-	m_shapes = m_controller->TakeShapes();
 
 	m_window.create(
 		sf::VideoMode({ WIDTH, HEIGHT }),
