@@ -11,14 +11,6 @@ void CSelectionController::HandleEvent(const sf::Event& event)
 	{
 		HandleMouseButtonPressed(*mp);
 	}
-	else if (auto* mm = event.getIf<sf::Event::MouseMoved>())
-	{
-		HandleMouseMoved(*mm);
-	}
-	else if (auto* mr = event.getIf<sf::Event::MouseButtonReleased>())
-	{
-		HandleMouseButtonReleased(*mr);
-	}
 	else if (auto* kp = event.getIf<sf::Event::KeyPressed>())
 	{
 		HandleKeyPressed(*kp);
@@ -32,37 +24,15 @@ void CSelectionController::HandleMouseButtonPressed(const sf::Event::MouseButton
 		return;
 	}
 
-	sf::Vector2f pos(static_cast<float>(mp.position.x), static_cast<float>(mp.position.y));
-	bool shift = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::RShift);
-
-	SelectShapeAt(CPoint(pos.x, pos.y), shift);
-
-	if (!m_selectedShapes.empty())
-	{
-		m_isDragging = true;
-		m_lastMousePos = pos;
-	}
-}
-
-void CSelectionController::HandleMouseMoved(const sf::Event::MouseMoved& mm)
-{
-	if (!m_isDragging)
+	if (mp.position.y < BAR_HEIGHT)
 	{
 		return;
 	}
 
-	sf::Vector2f pos(static_cast<float>(mm.position.x), static_cast<float>(mm.position.y));
-	float dx = pos.x - m_lastMousePos.x;
-	float dy = pos.y - m_lastMousePos.y;
+	sf::Vector2f pos(static_cast<float>(mp.position.x), static_cast<float>(mp.position.y));
+	bool shift = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::RShift);
 
-	DragSelected(dx, dy);
-	m_lastMousePos = pos;
-}
-
-void CSelectionController::HandleMouseButtonReleased(const sf::Event::MouseButtonReleased& mr)
-{
-	if (mr.button == sf::Mouse::Button::Left)
-		m_isDragging = false;
+	SelectShapeAt(CPoint(pos.x, pos.y), shift);
 }
 
 void CSelectionController::HandleKeyPressed(const sf::Event::KeyPressed& kp)
@@ -120,7 +90,7 @@ void CSelectionController::SelectShapeAt(CPoint point, bool shiftPressed)
 
 	if (!shiftPressed)
 	{
-		ClearSelection();
+		m_selectedShapes.clear();
 	}
 
 	if (hit == nullptr)
@@ -170,7 +140,7 @@ void CSelectionController::GroupSelected()
 
 	shapes.push_back(std::move(composite));
 
-	ClearSelection();
+	m_selectedShapes.clear();
 	m_selectedShapes.push_back(shapes.back().get());
 }
 
@@ -205,15 +175,7 @@ void CSelectionController::UngroupSelected()
 		shapes.push_back(std::move(child));
 	}
 
-	ClearSelection();
-}
-
-void CSelectionController::DragSelected(double dx, double dy)
-{
-	for (IShape* shape : m_selectedShapes)
-	{
-		shape->Move(dx, dy);
-	}
+	m_selectedShapes.clear();
 }
 
 std::vector<std::unique_ptr<IShape>>& CSelectionController::GetShapes()

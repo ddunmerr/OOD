@@ -6,7 +6,6 @@
 #include "CRectangle.h"
 #include "CSelectionController.h"
 #include "CShapeController.h"
-#include "CToolState.h"
 #include "CTriangle.h"
 #include "IToolState.h"
 #include "consts.h"

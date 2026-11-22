@@ -43,8 +43,10 @@ void CApplicationSingletone::ProcessEvents()
 			m_window.close();
 			continue;
 		}
-		m_toolbar->HandleEvent(*event);
+
 		m_selectionController->HandleEvent(*event);
+
+		m_toolbar->HandleEvent(*event);
 	}
 }
 

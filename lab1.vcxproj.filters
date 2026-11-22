@@ -102,9 +102,6 @@
     <ClCompile Include="CButton.cpp">
       <Filter>Исходные файлы\Toolbar</Filter>
     </ClCompile>
-    <ClCompile Include="CToolState.cpp">
-      <Filter>Исходные файлы\Toolbar</Filter>
-    </ClCompile>
     <ClCompile Include="CToolbar.cpp">
       <Filter>Исходные файлы\Toolbar</Filter>
     </ClCompile>
@@ -113,6 +110,15 @@
     </ClCompile>
     <ClCompile Include="CShapeController.cpp">
       <Filter>Исходные файлы\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="CDragState.cpp">
+      <Filter>Исходные файлы\Toolbar</Filter>
+    </ClCompile>
+    <ClCompile Include="CFillState.cpp">
+      <Filter>Исходные файлы\Toolbar</Filter>
+    </ClCompile>
+    <ClCompile Include="CAddShapeState.cpp">
+      <Filter>Исходные файлы\Toolbar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -188,10 +194,16 @@
     <ClInclude Include="CShapeController.h">
       <Filter>Файлы заголовков\IO</Filter>
     </ClInclude>
-    <ClInclude Include="CToolState.h">
+    <ClInclude Include="IToolState.h">
       <Filter>Файлы заголовков\Toolbar</Filter>
     </ClInclude>
-    <ClInclude Include="IToolState.h">
+    <ClInclude Include="CDragState.h">
+      <Filter>Файлы заголовков\Toolbar</Filter>
+    </ClInclude>
+    <ClInclude Include="CFillState.h">
+      <Filter>Файлы заголовков\Toolbar</Filter>
+    </ClInclude>
+    <ClInclude Include="CAddShapeState.h">
       <Filter>Файлы заголовков\Toolbar</Filter>
     </ClInclude>
   </ItemGroup>
