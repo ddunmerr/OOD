@@ -1,6 +1,6 @@
 #include "ShapeFormatter.h"
 
-std::string FormatShape(const std::string& typeName, const IShape& shape)
+std::string CShapeFormatter::FormatShape(const std::string& typeName, const IShape& shape)
 {
 	std::ostringstream oss;
 	oss << std::fixed << std::setprecision(0)

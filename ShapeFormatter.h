@@ -5,4 +5,8 @@
 #include <sstream>
 #include <string>
 
-std::string FormatShape(const std::string& typeName, const IShape& shape);
+class CShapeFormatter
+{
+public:
+	std::string FormatShape(const std::string& typeName, const IShape& shape);
+};

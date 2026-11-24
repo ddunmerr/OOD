@@ -22,6 +22,6 @@ private:
 	sf::FloatRect m_bounds;
 	std::string m_label;
 	std::function<void()> m_onClick;
-	sf::Color m_fillColor = sf::Color(220, 220, 220);
+	sf::Color m_fillColor = sf::Color(BUTTON_FILL, BUTTON_FILL, BUTTON_FILL);
 	bool m_isOutline = false;
 };

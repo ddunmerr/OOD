@@ -21,7 +21,8 @@ double CCircle::GetPerimeter() const
 
 std::string CCircle::ToString() const
 {
-	return FormatShape(CIRCLE_STRING, *this);
+	CShapeFormatter formatter;
+	return formatter.FormatShape(CIRCLE_STRING, *this);
 }
 
 void CCircle::Draw(ICanvas& canvas) const

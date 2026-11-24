@@ -23,7 +23,8 @@ double CRectangle::GetPerimeter() const
 
 std::string CRectangle::ToString() const
 {
-	return FormatShape(RECTANGLE_STRING, *this);
+	CShapeFormatter formatter;
+	return formatter.FormatShape(RECTANGLE_STRING, *this);
 }
 
 void CRectangle::Draw(ICanvas& canvas) const

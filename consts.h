@@ -116,6 +116,7 @@ const float Y = 6.f;
 const float BAR_HEIGHT = BTN + 2.f * PAD;
 
 const int BACKGROUND_GRAY = 230;
+const int BUTTON_FILL = 220;
 const float TRIANGLE_DEFAULT_SIZE = 80.0f;
 const float TRIANGLE_OFFSET_X = 40.0f;
 const float RECTANGLE_DEFAULT_WIDTH = 100.0f;

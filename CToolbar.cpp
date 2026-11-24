@@ -114,25 +114,26 @@ void CToolbar::BuildButtons()
 
 void CToolbar::HandleEvent(const sf::Event& event)
 {
-	// 1. Сначала проверяем, не кликнули ли мы по кнопкам самой панели
-	if (auto* mp = event.getIf<sf::Event::MouseButtonPressed>())
+	if (auto* mp = event.getIf<sf::Event::MouseButtonPressed>();
+		mp && mp->position.y < BAR_HEIGHT)
 	{
-		if (mp->position.y < BAR_HEIGHT)
+		sf::Vector2f pos(static_cast<float>(mp->position.x), static_cast<float>(mp->position.y));
+
+		if (std::any_of(m_buttons.begin(), m_buttons.end(),
+				[&pos](const auto& btn) {
+					if (btn->Contains(pos))
+					{
+						btn->Click();
+						return true;
+					}
+					return false;
+				}))
 		{
-			sf::Vector2f pos(static_cast<float>(mp->position.x), static_cast<float>(mp->position.y));
-			for (auto& btn : m_buttons)
-			{
-				if (btn->Contains(pos))
-				{
-					btn->Click();
-					return; // Событие обработано кнопкой, дальше не передаем
-				}
-			}
-			return; // Клик в пустую область панели, игнорируем
+			return;
 		}
+		return;
 	}
 
-	// 2. Если клик был по рабочему полю, передаем событие текущему инструменту (State)
 	if (m_tool)
 	{
 		m_tool->HandleEvent(event, m_selection);
@@ -141,12 +142,10 @@ void CToolbar::HandleEvent(const sf::Event& event)
 
 void CToolbar::Draw(sf::RenderWindow& window) const
 {
-	// Рисуем фон панели
 	sf::RectangleShape bg({ static_cast<float>(WIDTH), BAR_HEIGHT });
 	bg.setFillColor(sf::Color(BACKGROUND_GRAY, BACKGROUND_GRAY, BACKGROUND_GRAY));
 	window.draw(bg);
 
-	// Рисуем все кнопки поверх фона
 	for (const auto& btn : m_buttons)
 	{
 		btn->Draw(window);

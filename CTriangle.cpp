@@ -34,7 +34,8 @@ double CTriangle::GetPerimeter() const
 
 std::string CTriangle::ToString() const
 {
-	return FormatShape(TRIANGLE_STRING, *this);
+	CShapeFormatter formatter;
+	return formatter.FormatShape(TRIANGLE_STRING, *this);
 }
 
 uint32_t CTriangle::GetOutlineColor() const
